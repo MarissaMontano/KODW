@@ -3,8 +3,8 @@
 from PyQt5.QtWidgets import QMainWindow, QShortcut, QColorDialog
 from PyQt5.QtGui import QPalette, QColor, QLinearGradient, QBrush, QIcon
 from PyQt5.QtCore import Qt
-from GUI.mainWidget import MainWidget
-from GUI.scrollBar import ScrollBar
+from mainWidget import MainWidget
+from scrollBar import ScrollBar
 
 
 class MainWindow(QMainWindow):
