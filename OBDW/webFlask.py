@@ -1,8 +1,4 @@
-#!/usr/bin/env python3
-
-
-from flask import Flask, request, session, g, redirect, url_for, abort, \
-    render_template, flash
+from flask import Flask, request, session, g, redirect, url_for, abort, render_template, flash
 import requests
 import database
 
@@ -111,7 +107,7 @@ def logout():
         Output: index function to get to login page 
     '''
     session.pop('username', None)
-    #app.config['SHARED'].stop()
+    # app.config['SHARED'].stop()
     return index()
 
 # hack to use /delete.....TODO: fix it! no hacks allowed
@@ -170,7 +166,6 @@ def music():
     '''
     app.config['SHARED'].record_click()
     return index()
-    
 
 
 @app.errorhandler(404)
@@ -180,10 +175,3 @@ def page_not_found(error):
         Output: None
     '''
     return render_template('page_not_found.html'), 404
-
-
-@app.route('/quit')
-def shutdown():
-    control = app.config['SHARED']
-    control.stop()
-    print('closed the threads')

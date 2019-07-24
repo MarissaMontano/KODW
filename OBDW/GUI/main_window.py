@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-
 from PyQt5.QtWidgets import QMainWindow, QShortcut, QColorDialog
 from PyQt5.QtGui import QPalette, QColor, QLinearGradient, QBrush, QIcon
 from PyQt5.QtCore import Qt, QThread
@@ -28,9 +26,8 @@ class MainWindow(QMainWindow):
         self.setCentralWidget(self.mainWidget)
 
         #self.thread = QThread()
-        #self.thread.started.connect()
-        #self.thread.start()
-        
+        # self.thread.started.connect()
+        # self.thread.start()
 
     def handelButtonColor(self):
         colorDialog = QColorDialog.getColor()
