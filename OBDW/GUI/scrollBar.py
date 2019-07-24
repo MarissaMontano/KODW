@@ -1,5 +1,5 @@
 from PyQt5.QtWidgets import QScrollBar
-from mainWidget import MainWidget
+from GUI.mainWidget import MainWidget
 
 # Class just to change stylesheet of sthe scrollbar
 
