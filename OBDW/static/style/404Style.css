@@ -1,0 +1,34 @@
+body {
+font-family: Helvetica;
+background-color: rgb(126, 145, 158);
+padding: 50px;
+}
+
+.header{
+padding: 1%;
+text-align: left;
+background: rgb(132, 115, 143) !important;
+color: white;
+font-size: 30px;
+transition: border .25s;
+border-radius: 3px;
+}
+
+.pnf{
+margin: 20px auto;
+width: 1200px;
+margin-top: 40px;
+text-align: center;
+font: Helvetica;
+}
+
+h1 {
+color: rgb(255, 255, 255);
+text-align: center;
+    
+}
+
+a {
+margin-top: 40px;
+color: #c57171;
+}

@@ -1,0 +1,91 @@
+body {
+font-family: Helvetica;
+background-color: rgb(126, 145, 158);
+padding: 50px;
+}
+
+.header{
+padding: 1%;
+text-align: left;
+background: rgb(132, 115, 143) !important;
+color: white;
+font-size: 30px;
+transition: border .25s;
+border-radius: 3px;
+}
+
+.create{
+margin: 20px auto;
+width: 300px;
+margin-top: 40px;
+}
+
+.create-form {
+text-align: center;
+}
+
+.control-group {
+margin-bottom: 25px;
+}
+
+h1 {
+    color: rgb(255, 255, 255);
+    text-align: center;
+    font: Helvetica;
+}
+
+input {
+text-align: center;
+background-color: rgb(242, 237, 245);
+border: 2px solid transparent;
+border-radius: 3px;
+font-size: 16px;
+font-weight: 200;
+padding: 10px 0;
+width: 250px;
+transition: border .5s;
+}
+
+.btn {
+border: 2px solid transparent;
+background: rgb(132, 115, 143);
+color: #ffffff;
+font-size: 16px;
+line-height: 25px;
+padding: 10px 0;
+border-radius: 3px;
+transition: 0.25s;
+width: 250px;
+margin: 0 auto;
+}
+
+.btn:hover {
+background-color: rgb(169, 161, 175);
+}
+
+.links{
+text-align: center;
+margin-top: 20px;
+color: #c57171;
+}
+
+a{
+color: #c57171;
+}
+
+.alert{
+color: black;
+text-align: center;
+text-decoration: none;
+display: inline;
+}
+
+.alert2{
+background-color: rgb(165, 153, 167);
+color:black;
+text-align: center;
+text-decoration: none;
+font-size: 10px;
+height: 15px;
+width: 15px;
+}

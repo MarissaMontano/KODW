@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block head %}
+ {{ super() }}
+{% endblock %}
+{% block body %}
+
+<h1>test the GUI</h1>
+
+<form action="/music" method="POST">
+
+    <div>
+        <input type="submit" value="Click me" class="btn btn-primary">
+    </div>
+</form>
+
+
+{% endblock%}

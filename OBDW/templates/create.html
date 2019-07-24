@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Create New Account </title>
+        <link rel="stylesheet" href="./static/style/createStyle.css" type="text/css">
+    </head>
+    <body>
+        <div class="header">
+            <h1>Boring Website</h1>
+        </div>
+        <hr>
+        <div class=msg>
+            {% with error = get_flashed_messages() %}
+                {% if error %}
+                    <form method="post">
+                        <div class="alert">
+                            <input class="alert2" type="submit" name="close_msg" value = "&times">
+                            {{error[0]}}
+                        </div>
+                    </form>
+                {% endif %}
+            {% endwith %}
+        </div>
+        <form action="/create" method="POST">
+            <div class="create">
+                <h1>Create a new account</h1>
+            </div>
+            <div class="create-form">
+                <div class="control-group">
+                    <input type="text" class="login-field" value="" placeholder="Username" name="username">
+                    <label class="login-field-user" for="login-name"></label>
+                </div>
+                <div class="control-group">
+                    <input type="password" class="login-field" value="" placeholder="Password" name="password">
+                    <label class="login-field-lock" for="login-pass"></label>
+                </div>
+                <div class="control-group">
+                    <input type="password" class="login-field" value="" placeholder="Password again" name="password2">
+                    <label class="login-field-lock" for="login-pass2"></label>
+                </div>
+                <div>
+                    <input type="submit" value="Create" class="btn btn-primary">
+                </div>
+                <div class="links">
+                    <a href="/">Go back</a>
+                </div>
+            </div>
+        </form>
+    </body>
+</html>

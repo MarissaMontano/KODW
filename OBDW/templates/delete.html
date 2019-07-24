@@ -1,0 +1,37 @@
+
+{% extends "base.html" %}
+{% block head %}
+ {{ super() }}
+{% endblock %}
+{% block body %}
+<div class=msg>
+    {% with error = get_flashed_messages() %}
+        {% if error %}
+            <form method="post">
+                <div class="alert">
+                    <input class="alert2" type="submit" name="close_msg" value = "&times">
+                    {{error[0]}}
+                </div>
+            </form>
+        {% endif %}
+    {% endwith %}
+</div>
+
+    <form action="/delete" method="POST">
+        <div class="delete">
+            <h1> Delete your account</h1>
+        </div>
+        <div class="delete">
+            <h3> Warning: be sure you wanna do this... there's no going back</h3>
+        </div>
+        <div class="delete-form">
+            <div class="control-group">
+                <input type="password" class="login-field" value="" placeholder="Password" name="password">
+                <label class="login-field-lock" for="login-pass"></label>
+            </div>
+            <div>
+                <input type="submit" value="Delete" class="btn btn-primary">
+            </div>
+        </div>
+    </form>
+{% endblock %}

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Login </title>
+        <link rel="stylesheet" href="./static/style/loginStyle.css" type="text/css">
+    </head>
+    <body>
+        <div class="header">
+            <h1>Knock Off Discover Weekly</h1>
+        </div>
+        <hr>
+        <div class=msg>
+            {% with error = get_flashed_messages() %}
+                {% if error %}
+                <form method="post">
+                    <div class="alert">
+                        <input class="alert2" type="submit" name="close_msg" value = "&times">
+                        {{error[0]}}
+                    </div>
+                </form>
+                {% endif %}
+            {% endwith %}
+        </div>
+                        
+        <form action="/login" method="POST">
+            <div class="login">
+                <h1>Login page</h1>
+            </div>
+            <div class="login-form">
+                <div class="control-group">
+                    <input type="text" class="login-field" value="" placeholder="Username" name="username">
+                    <label class="login-field-user" for="login-name"></label>
+                </div>
+                <div class="control-group">
+                    <input type="password" class="login-field" value="" placeholder="Password" name="password">
+                    <label class="login-field-lock" for="login-pass"></label>
+                </div>
+                <div>
+                    <input type="submit" value="Log in" class="btn btn-primary">
+                </div>
+           </div>
+        </form>
+        <form action="/login" method="GET", class="create">
+                <div>
+                    <input type="submit" value="Create account" class="btn-secondary">
+                </div>
+         </form>
+    </body>
+</html>
