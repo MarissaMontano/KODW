@@ -2,9 +2,10 @@
 
 from PyQt5.QtWidgets import QMainWindow, QShortcut, QColorDialog
 from PyQt5.QtGui import QPalette, QColor, QLinearGradient, QBrush, QIcon
-from PyQt5.QtCore import Qt
+from PyQt5.QtCore import Qt, QThread
 from GUI.mainWidget import MainWidget
 from GUI.scrollBar import ScrollBar
+import sys
 
 
 class MainWindow(QMainWindow):
@@ -25,6 +26,11 @@ class MainWindow(QMainWindow):
         # Make shortcut so you dont have to hit x button
         QShortcut("Ctrl+q", self, activated=self.close)
         self.setCentralWidget(self.mainWidget)
+
+        #self.thread = QThread()
+        #self.thread.started.connect()
+        #self.thread.start()
+        
 
     def handelButtonColor(self):
         colorDialog = QColorDialog.getColor()

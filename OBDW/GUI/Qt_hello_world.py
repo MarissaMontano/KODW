@@ -12,8 +12,5 @@ def main():
     height = mainWindow.height()
     mainWindow.resize(width/.7, height/.5)
     mainWindow.show()
-    exit(app.exec())
+    app.exec_()
 
-
-if __name__ == "__main__":
-    main()

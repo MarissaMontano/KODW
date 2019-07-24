@@ -45,7 +45,10 @@ def main():
         time.sleep(0.1)
         if shared_state.clicked():
             mainGUI()
+        
     ui_thread.join()
+    shared_state.stop()
+    print('closed thread')
 
 if __name__ == '__main__':
     main()
