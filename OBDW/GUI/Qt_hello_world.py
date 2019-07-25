@@ -8,6 +8,6 @@ def main():
     mainWindow = MainWindow()
     width = mainWindow.width()
     height = mainWindow.height()
-    mainWindow.resize(width/.7, height/.5)
+    mainWindow.resize(width/.6, height/.7)
     mainWindow.show()
     app.exec_()
