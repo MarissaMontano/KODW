@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-
 from PyQt5.QtWidgets import QApplication
 from GUI.main_window import MainWindow
 import sys
@@ -10,10 +8,6 @@ def main():
     mainWindow = MainWindow()
     width = mainWindow.width()
     height = mainWindow.height()
-    mainWindow.resize(width/.7, height/.5)
+    mainWindow.resize(width/.6, height/.7)
     mainWindow.show()
-    exit(app.exec())
-
-
-if __name__ == "__main__":
-    main()
+    app.exec_()
