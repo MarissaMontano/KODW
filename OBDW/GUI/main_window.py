@@ -12,8 +12,11 @@ class MainWindow(QMainWindow):
         self.setWindowTitle("OBDW")
         self.setStyleSheet('background-color: rgb(27, 27, 27);')
         self.mainWidget = MainWidget()
-        #set cancel button functionality 
+        #set cancel/ok button functionality 
         self.mainWidget.cancelButton.clicked.connect(self.close)
+        self.userClassifier = ''
+        self.userGenres = []
+        self.mainWidget.okButton.clicked.connect(self.handleOK)
 
         # TODO: mess with palette stuff
         # text white, background dark gray
@@ -57,3 +60,14 @@ class MainWindow(QMainWindow):
 
     def gradientBoost(self):
         print('boost')
+    
+    def handleOK(self):
+        # update genere and classifier
+        items = self.mainWidget.genreTable.selectedItems()
+        for item in items:
+            self.userGenres.append(item.text())
+        self.userClassifier = self.mainWidget.classifierCombo.currentText()
+        self.close()
+
+    def grabUserInfo(self):
+        return(self.userGenres, self.userClassifier)

@@ -6,6 +6,7 @@ import threading
 from GUI.Qt_hello_world import main as mainGUI
 from webFlask import app
 from sharedState import SharedState
+from recommender import Recommender
 
 PORT = 3000
 
@@ -32,6 +33,9 @@ def main():
         Input: None
         Output: None
     '''
+    #grab Enine
+    
+
     # thread the Flask app
     shared_state = SharedState()
     ui_thread = threading.Thread(target=webserver, args=(shared_state,))
@@ -44,7 +48,8 @@ def main():
         while shared_state._running:
             time.sleep(0.1)
             if shared_state.clicked():
-                mainGUI()
+                genre, classi = mainGUI()
+                print(genre, classi)
         # TODO: understand what thread.join() does and how to properly kill the thread
         ui_thread.join()
 
