@@ -9,16 +9,17 @@ import math
 class MainWidget(QWidget):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+        # get screen size to make obj reletive instread of fixed    
+        sizeObject = QDesktopWidget().screenGeometry(-1)
+        width = sizeObject.width()
+        height = sizeObject.height()
 
         mainLayout = QVBoxLayout(self)
         exitLayout = QHBoxLayout()
         cacheLayout = QVBoxLayout()
         genreLayout = QVBoxLayout()
         classLayout = QVBoxLayout()
-        # get screen size to make obj reletive instread of fixed
-        sizeObject = QDesktopWidget().screenGeometry(-1)
-        width = sizeObject.width()
-        height = sizeObject.height()
+        genreBox = QHBoxLayout()
 
         # label for cache
         cacheLable = QLabel(
@@ -56,25 +57,25 @@ class MainWidget(QWidget):
                 color:gray;
             }""")
 
-        genres = ['acoustic', 'afrobeat', 'alt-rock', 'alternative', 'ambient', 'anime', 'black-metal', 'bluegrass', 'blues', 'bossanova', 'brazil', 'breakbeat', 'british', 'cantopop', 
-                  'chicago-house', 'children', 'chill', 'classical', 'club', 'comedy', 'country', 'dance', 'dancehall', 'death-metal', 'deep-house', 'detroit-techno', 'disco', 'disney', 
-                  'drum-and-bass', 'dub', 'dubstep', 'edm', 'electro', 'electronic', 'emo', 'folk', 'forro', 'french', 'funk', 'garage', 'german', 'gospel', 'goth', 'grindcore', 'groove', 
-                  'grunge', 'guitar', 'happy', 'hard-rock', 'hardcore', 'hardstyle', 'heavy-metal', 'hip-hop', 'holidays', 'honky-tonk', 'house', 'idm', 'indian', 'indie', 'indie-pop',
-                  'industrial', 'iranian', 'j-dance','j-idol', 'j-pop', 'j-rock', 'jazz', 'k-pop', 'kids', 'latin', 'latino', 'malay', 'mandopop', 'metal', 'metal-misc', 'metalcore', 
-                  'minimal-techno', 'movies', 'mpb', 'new-age', 'new-release', 'opera', 'pagode', 'party', 'philippines-opm', 'piano', 'pop', 'pop-film', 'post-dubstep', 'power-pop', 
-                  'progressive-house', 'psych-rock', 'punk', 'punk-rock', 'r-n-b', 'rainy-day', 'reggae', 'reggaeton', 'road-trip', 'rock', 'rock-n-roll', 'rockabilly', 'romance', 'sad', 
-                  'salsa', 'samba', 'sertanejo', 'show-tunes', 'singer-songwriter', 'ska', 'sleep', 'songwriter', 'soul', 'soundtracks', 'spanish', 'study', 'summer', 'swedish', 'synth-pop', 
-                  'tango', 'techno', 'trance', 'trip-hop', 'turkish', 'work-out', 'world-music']
-        self.genreTable.setRowCount(math.ceil(len(genres)/10))
-        self.genreTable.setColumnCount(10)
+        genres = ['acoustic', 'afrobeat', 'alt-rock', 'alternative', 'ambient', 'black-metal', 'bluegrass', 'blues', 'bossanova',
+                  'chicago-house', 'chill', 'classical', 'comedy', 'country', 'dance', 'death-metal', 'deep-house', 'detroit-techno', 
+                  'disco', 'dubstep', 'edm', 'electronic', 'emo', 'folk', 'funk', 'gospel', 'goth', 'grindcore', 'groove', 'grunge',
+                  'guitar', 'happy', 'hard-rock', 'hardcore', 'heavy-metal', 'hip-hop', 'house', 'indie','industrial','jazz',
+                  'latin', 'latino', 'metal', 'metal-misc', 'metalcore', 'indie-pop','new-age','new-release', 'opera','party',
+                  'piano', 'pop', 'progressive-house', 'psych-rock','punk-rock', 'r-n-b', 'rainy-day', 'reggae', 'rock','rock-n-roll',
+                  'romance', 'sad', 'salsa','sleep','soul', 'spanish', 'study', 'summer','tango', 'techno', 'trance', 'work-out']
+                   
+                  
+        self.genreTable.setRowCount(math.ceil(len(genres)/6))
+        self.genreTable.setColumnCount(6)
         self.genreTable.setSelectionMode(QAbstractItemView.MultiSelection)
         self.genreTable.setEditTriggers(QAbstractItemView.NoEditTriggers)
         # set the table widget item in table and center the text.
         row = 0
         for i in range(len(genres)):
-            if(i % 10 == 0 and i != 0):
+            if(i % 6 == 0 and i != 0):
                 row += 1
-            col = i % 10
+            col = i % 6
             types = QTableWidgetItem(genres[i])
             types.setTextAlignment(Qt.AlignCenter)
             self.genreTable.setItem(row, col, types)
@@ -89,9 +90,10 @@ class MainWidget(QWidget):
         # Combo box to select classifier
         self.classifierCombo = QComboBox()
         self.classifierCombo.setFixedWidth(width/10)
+        self.classifierCombo.addItem("Gradient Boosting ")
         self.classifierCombo.addItem("K-Nearest Neighbors")
         self.classifierCombo.addItem("RBF SVM")
-        self.classifierCombo.addItem("Gradient Boosting ")
+        
 
         # Way to cancel and exit GUI
         self.cancelButton = QPushButton("Cancel")
@@ -103,20 +105,29 @@ class MainWidget(QWidget):
 
         # first layout to hold the main widget stuff
         mainLayout.addStretch(0)
+        mainLayout.addSpacing(width/50)
         cacheLayout.addWidget(cacheLable)
+        cacheLayout.addSpacing(width/90)
         cacheLayout.addWidget(cacheButton)
         cacheLayout.setAlignment(Qt.AlignLeft)
         mainLayout.addLayout(cacheLayout)
         mainLayout.addStretch(0)
         genreLayout.addWidget(genreLable)
         genreLayout.setAlignment(Qt.AlignLeft)
+        mainLayout.addSpacing(width/50)
         mainLayout.addLayout(genreLayout)
-        mainLayout.addWidget(self.genreTable)
+        mainLayout.addSpacing(width/90)
+        genreBox.addWidget(self.genreTable)
+        genreBox.addSpacing(width/5)
+        mainLayout.addLayout(genreBox)
+        mainLayout.addSpacing(width/50)
         mainLayout.addStretch(0)
         classLayout.addWidget(classifierLable)
+        classLayout.addSpacing(width/90)
         classLayout.addWidget(self.classifierCombo)
         classLayout.setAlignment(Qt.AlignLeft)
         mainLayout.addLayout(classLayout)
+        mainLayout.addSpacing(width/50)
         mainLayout.addStretch(0)
         mainLayout.addLayout(exitLayout)
 
@@ -127,7 +138,7 @@ class MainWidget(QWidget):
         exitLayout.addWidget(self.cancelButton)
         exitLayout.setAlignment(Qt.AlignRight)
 
-        # Stylesheets!!!!!!!!!!!!!!!!!
+        # Stylesheets!!!!!!
         labelStyle = """
             padding: 2%;
             text-align: left;

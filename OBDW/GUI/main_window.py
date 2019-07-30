@@ -27,12 +27,12 @@ class MainWindow(QMainWindow):
 
         # menue bar
         classifierMenu = QMenu("&Classifiers", self)
+        gradBoost = QAction("&Gradient Boosting", self)
+        gradBoost.triggered.connect(self.gradientBoost)
         knear = QAction("&K-Nearest Neighbors", self)
         knear.triggered.connect(self.kNearest)
         rbfsvm = QAction("&RBF SVM", self)
         rbfsvm.triggered.connect(self.rbfSvm)
-        gradBoost = QAction("&Gradient Boosting", self)
-        gradBoost.triggered.connect(self.gradientBoost)
         classifierMenu.addAction(knear)
         classifierMenu.addAction(rbfsvm)
         classifierMenu.addAction(gradBoost)
@@ -52,6 +52,7 @@ class MainWindow(QMainWindow):
         QMenuBar{background-color: rgb(33, 33, 33);}""")
         self.setCentralWidget(self.mainWidget)
 
+    #talk about them here
     def kNearest(self):
         print('near')
 
@@ -70,4 +71,4 @@ class MainWindow(QMainWindow):
         self.close()
 
     def grabUserInfo(self):
-        return(self.userGenres, self.userClassifier)
+        return([self.userGenres, self.userClassifier])

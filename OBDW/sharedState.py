@@ -15,14 +15,16 @@ class SharedState:
         self._lock = threading.Lock()
         self._running = True
         self._click_count = 0
+        self.currentUser = None
 
-    def record_click(self):
+    def record_click(self, uid):
         ''' This method is called when the the flask app requests the GUI and all it does
             is increases the _click_count.
 
-            Input: None
+            Input: userID
             Output: None
         '''
+        self.currentUser = uid
         with self._lock:
             self._click_count += 1
 
