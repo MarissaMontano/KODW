@@ -15,7 +15,9 @@ class SharedState:
         self._lock = threading.Lock()
         self._running = True
         self._click_count = 0
+        self._refresh_count = 0
         self.currentUser = None
+        self.recommenList = []
 
     def record_click(self, uid):
         ''' This method is called when the the flask app requests the GUI and all it does
@@ -39,6 +41,29 @@ class SharedState:
             self._click_count -= 1
             return True
         return False
+    
+    def record_refresh(self, uid):
+        ''' This method is called when the the flask app when someone logs in or refreshes
+
+            Input: userID
+            Output: None
+        '''
+        self.currentUser = uid
+        with self._lock:
+            self._refresh_count += 1
+
+    
+    def refresh(self):
+        ''' This method is used to send a signal someone loggedin, so display recomendations
+
+            Input: None
+            Output: True if _click_count is non-zero, False if otherwise
+        '''
+        if self._refresh_count > 0:
+            self._refresh_count -= 1
+            return True
+        return False
+       
 
     def stop(self):
         ''' This method is used to kill the spinklock threading loop

@@ -155,6 +155,8 @@ class Database(object):
             # Execute the delete command
             self.cursor.execute(
                 "DELETE FROM User WHERE User_ID = ?;", (userID, ))
+            self.cursor.execute(
+                "DELETE FROM User_Song WHERE User_ID = ?;", (userID, ))
             return True
         else:
             return False
@@ -178,6 +180,17 @@ class Database(object):
         cleanData = self.cleanSongData(songList)
 
         return cleanData
+
+    def setUserSongData(self, ratedList):
+        ''' Method to set a list of data in the table User_Song (uid, sid, and rating of songs) 
+
+                Input: ratedList (3D list)
+                Output: None 
+        '''
+        for uid, sid, rate in ratedList:
+            # grab song list and ratings
+            self.cursor.execute("INSERT INTO User_Song (User_ID, Song_ID, Rating) VALUES(?, ?, ?);",
+                                (uid, sid, rate))
 
     def grabUserGenres(self, userID):
         ''' Method to pull the Users genre given their ID
@@ -232,39 +245,61 @@ class Database(object):
             else:
                 # Execute and commit the insert query if it dosn't already exist
                 self.cursor.execute("INSERT INTO Song (Song_ID, Key, Mode, Acousticness, Danceability, Energy, Instrumentalness, Liveness, Loudness, Speechiness, Valence, Tempo, Name, Artist, URL) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);",
-                                    (data[0], data[1], data[2],data[3],data[4],data[5],data[6],data[7],data[8],data[9],data[10],data[11], data[12], data[13], data[14]))
+                                    (data[0], data[1], data[2], data[3], data[4], data[5], data[6], data[7], data[8], data[9], data[10], data[11], data[12], data[13], data[14]))
         return True
 
     def cleanSongData(self, songList):
         ''' Method to format the song list data to use with the classifiers
 
             Input: songList (2D array from getUsersSongData)
-            Output: clean list of song data (ND pandas array)
+            Output: clean list of song data (ND pandas array), or None is no data was found
         '''
-        cleanData = []
+        cleanData = {'Key':[], 'Mode':[], 'Acousticness':[], 'Danceability':[], 'Energy':[], 'Instrumentalness':[], 'Liveness':[], 'Loudness':[], 'Speechiness':[], 'Valence':[], 'Tempo':[], 'Rating':[]}
         for song in songList:
             self.cursor.execute(
                 "SELECT * FROM Song WHERE Song_ID = ? ;", (song[0], ))
             data = self.cursor.fetchone()
             if data:
                 # Key, Mode, Acousticness, Danceability, Energy, Instrumentalness, Liveness, Loudness, Speechiness, Valence, Tempo, Rating
-                cleanData.append( [data[1], data[2],data[3],data[4],data[5],data[6],data[7],data[8],data[9],data[10],data[11],song[1]])
-        if len(cleanData) == 0:
-            return []
-        return pd.DataFrame(cleanData, columns=list('Key, Mode, Acousticness, Danceability, Energy, Instrumentalness, Liveness, Loudness, Speechiness, Valence, Tempo, Rating'))
+                cleanData['Key'].append(data[1])
+                cleanData['Mode'].append(data[2])
+                cleanData['Acousticness'].append(data[3])
+                cleanData['Danceability'].append(data[4])
+                cleanData['Energy'].append(data[5])
+                cleanData['Instrumentalness'].append(data[6])
+                cleanData['Liveness'].append(data[7])
+                cleanData['Loudness'].append(data[8])
+                cleanData['Speechiness'].append(data[9])
+                cleanData['Valence'].append(data[10])
+                cleanData['Tempo'].append(data[11])
+                cleanData['Rating'].append(song[1])
+        if len(cleanData['Key']) == 0:
+            return None
+        clean = pd.DataFrame(cleanData)
+        return clean
 
-    def cleanPredict(self, songList):
-        cleanData = []
-        for song in songList:
-            self.cursor.execute(
-                "SELECT * FROM Song WHERE Song_ID = ? ;", (song, ))
+    def getRandomPredict(self):
+        cleanData = {'Key':[], 'Mode':[], 'Acousticness':[], 'Danceability':[], 'Energy':[], 'Instrumentalness':[], 'Liveness':[], 'Loudness':[], 'Speechiness':[], 'Valence':[], 'Tempo':[]}
+        self.cursor.execute(
+            "SELECT * FROM Song ORDER BY random();")
+        data = self.cursor.fetchone()
+        while data:
+            # Key, Mode, Acousticness, Danceability, Energy, Instrumentalness, Liveness, Loudness, Speechiness, Valence, Tempo
+            cleanData['Key'].append(data[1])
+            cleanData['Mode'].append(data[2])
+            cleanData['Acousticness'].append(data[3])
+            cleanData['Danceability'].append(data[4])
+            cleanData['Energy'].append(data[5])
+            cleanData['Instrumentalness'].append(data[6])
+            cleanData['Liveness'].append(data[7])
+            cleanData['Loudness'].append(data[8])
+            cleanData['Speechiness'].append(data[9])
+            cleanData['Valence'].append(data[10])
+            cleanData['Tempo'].append(data[11])
             data = self.cursor.fetchone()
-            if data:
-                # Key, Mode, Acousticness, Danceability, Energy, Instrumentalness, Liveness, Loudness, Speechiness, Valence, Tempo
-                cleanData.append( [data[1], data[2],data[3],data[4],data[5],data[6],data[7],data[8],data[9],data[10],data[11]])
-        return pd.DataFrame(cleanData, columns=list('Key, Mode, Acousticness, Danceability, Energy, Instrumentalness, Liveness, Loudness, Speechiness, Valence, Tempo'))
 
-
+        clean = pd.DataFrame(cleanData)
+        return clean
 
     def formatRecommendations(self, songIds):
         ''' Method to format the recomendations to be useful for the web side
@@ -273,11 +308,12 @@ class Database(object):
             Output: clean list of song data (ND array)
         '''
         cleanData = []
-        for song in songIds:
+        for idx, song in enumerate(songIds):
             self.cursor.execute(
                 "SELECT Name, Artist, URL FROM Song WHERE Song_ID = ? ;", (song, ))
             data = self.cursor.fetchone()
             if data:
                 # Song_ID, Key, Mode, Acousticness, Danceability, Energy, Instrumentalness, Liveness, Loudness, Speechiness, Valence, Tempo, Rating
-                cleanData.append([data[0], data[1], data[2]])
+                cleanData.append(
+                    [song, data[0], data[1], data[2], "r"+str(idx)])
         return cleanData

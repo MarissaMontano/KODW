@@ -2,11 +2,6 @@ from flask import Flask, request, session, g, redirect, url_for, abort, render_t
 import requests
 import database
 
-#app.logger.debug('A value for debugging')
-#app.logger.warning('A warning occurred (%d apples)', 42)
-#app.logger.error('An error occurred')
-
-
 app = Flask(__name__)
 
 
@@ -60,6 +55,7 @@ def login():
         # check if valid user,if so log them in, else ask them to login again
         if allow is not None:
             session['userID'] = allow
+            app.config['SHARED'].record_refresh(session['userID'])
         else:
             flash('Incorrect username or password, please try again')
 
@@ -151,25 +147,51 @@ def delete():
         return index()
 
 
-@app.route('/test')
-def test():
+@app.route('/recommend')
+def recommend():
     ''' Function ...
         Input: None
         Output: 
     '''
-    
-    return render_template('music.html')
+    recommendation =  app.config['SHARED'].recommenList
+    return render_template('music.html', recommendation = recommendation)
 
 
-@app.route('/music', methods=['POST'])
+@app.route('/music', methods=['POST', 'GET', 'PUT'])
 def music():
     ''' Function ...
         Input: None
         Output: 
     '''
-    #seems sketchy, but last person who clicks on the GUI is logged in
-    app.config['SHARED'].record_click(session['userID'])
-    return index()
+    # This means that they want the GUI
+    if request.method == 'PUT':
+        app.config['SHARED'].record_click(session['userID'])
+    # This means they want the page refreshed 
+    elif request.method == 'GET':
+        app.config['SHARED'].record_refresh(session['userID'])
+    else:
+        # save the ratings 
+        ratedSongs = []
+        for idx in range(10):
+            song = request.form.get('r'+str(idx)+'s', None)
+            rating = request.form.get('r'+str(idx), None)
+            if rating is not None:
+                ratedSongs.append([session['userID'], song, int(rating)])
+        db = database.Database(r"./OBDW.db")
+        db.openDatabase()
+        db.setUserSongData(ratedSongs)
+        db.closeDatabase()
+
+    return recommend()
+
+
+@app.route('/contact')
+def contact():
+    ''' Function ...
+        Input: None
+        Output: 
+    '''
+    return render_template('contact.html')
 
 
 @app.errorhandler(404)

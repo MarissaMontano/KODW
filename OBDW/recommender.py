@@ -20,6 +20,8 @@ from sklearn.svm import SVC
 CLIENT_ID = "c5e2d53ffcd64af3839e40efbe4a7382"
 CLIENT_SECRET = "ec6dfefa3f8e43f8bf3b61da9a77155e"
 PORT = 3000
+Estimators = 100
+
 
 
 class Recommender(object):
@@ -33,25 +35,18 @@ class Recommender(object):
         token = auth.get_access_token()
         self.spotify = spotipy.Spotify(auth=token)
         self.classifier = GradientBoostingClassifier(n_estimators=100, learning_rate=.1, max_depth=1, random_state=0)
-
-    # way to plot recomendations to web
-            # Make sure it takes in recommendation string
-
-    # way to grab data from website
-
-    # way to grab data from GUI/API
-
+    
     def grabRandomSongs(self, uid):
         ''' This method is used grab a new list of recommendations based on previous liked recomendation
 
             Input:  user ID
             Output: list of songs
+
+            #TODO: do config file
         '''
         # grab what genres the user likes
-        db = database.Database(r"./OBDW.db")
-        db.openDatabase()
-        genreList = db.grabUserGenres(uid)
-        db.closeDatabase()
+        genreList = self.db.grabUserGenres(uid)
+        self.db.commitWork()
 
         # if they dont have any genre data just recommend new releases
         if len(genreList) == 0:
@@ -77,10 +72,8 @@ class Recommender(object):
                     list of genres
             Output: None
         '''
-        db = database.Database(r"./OBDW.db")
-        db.openDatabase()
-        db.updateUserGenres(uid, genreList)
-        db.closeDatabase()
+        self.db.updateUserGenres(uid, genreList)
+        self.db.commitWork()
 
     def setClassifier(self, classStr):
         if classStr == "K-Nearest Neighbors":
@@ -105,11 +98,8 @@ class Recommender(object):
             musicData.append([song['id'], song['key'], song['mode'], song['acousticness'], song['danceability'], song['energy'], song['instrumentalness'], song['liveness'], song['loudness'], song['speechiness'], song['valence'], song['tempo'], newSongs[idx][1], newSongs[idx][2], newSongs[idx][3]])
 
         # add music to datbase
-        db = database.Database(r"./OBDW.db")
-        db.openDatabase()
-        db.updateSongTable(musicData)
-        db.closeDatabase()
-
+        self.db.updateSongTable(musicData)
+        self.db.commitWork()
 
     def calculateRecommendataion(self, uid):
         ''' This method updates the web app with new recommendations for a user
@@ -118,19 +108,14 @@ class Recommender(object):
             Output: None
         '''
         # grab songs their raitings, and train the recommender
-        db = database.Database(r"./OBDW.db")
-        db.openDatabase()
-        userData = db.getUsersSongData(uid)
-
+        userData = self.db.getUsersSongData(uid)
         # grab some random (semi-filterd) songs to feed in recommender
         songIds = [songs[0] for songs in self.grabRandomSongs(uid)]
-        # if there is no user data, recommend 10 random songs based off of genres
-        if userData == []:
-            #################################only doing this one################
-            recommendations = db.formatRecommendations(songIds[:10])
+        # if there is no user data or they have rated less than 5 songs, recommend 10 random songs based off of genres
+        if userData is None or len(userData.index) < 5 :
+            recommendations = self.db.formatRecommendations(songIds[:10])
         else:
-            predictData = db.cleanPredict(songIds)
-
+            predictData = self.db.getRandomPredict()
             features = ['Key', 'Mode', 'Acousticness', 'Danceability', 'Energy', 'Instrumentalness', 'Liveness', 'Loudness', 'Speechiness', 'Valence', 'Tempo']
             x_data = userData[features]
             y_data = userData['Rating']
@@ -138,15 +123,14 @@ class Recommender(object):
             prediction = self.classifier.predict(predictData)
             songsRec = []
             for idx, guess in enumerate(prediction):
-                #for non binary, if binary: if guess
                 if guess >= 4:
                     songsRec.append(songIds[idx]) 
                 if len(songsRec) == 10:
                     break
-            recommendations = db.formatRecommendations(songsRec)           
+            recommendations = self.db.formatRecommendations(songsRec)          
         #recommendation is [songName,songArtist SongURL]
-        print(recommendations)
-
+        return(recommendations)
+        
 
     def webserver(self, shared_state):
         ''' This method is used to start the web server and set the configuration
@@ -170,7 +154,7 @@ class Recommender(object):
             Input: None
             Output: None
         '''
-        shared_state= SharedState()
+        shared_state = SharedState()
         ui_thread= threading.Thread(target=self.webserver, args=(shared_state,))
         # Make the Flask thread daemon so they are automagically killed for us
         ui_thread.setDaemon(True)
@@ -180,6 +164,7 @@ class Recommender(object):
         try:
             while shared_state._running:
                 time.sleep(0.1)
+                #if the gui is open....
                 if shared_state.clicked():
                     output = mainGUI()
                     if len(output) == 2:
@@ -191,12 +176,17 @@ class Recommender(object):
                             self.calculateRecommendataion(uid)
                     else:
                         pass
+                #if someone loggs in for refreshes 
+                if shared_state.refresh():
+                    uid = shared_state.currentUser
+                    shared_state.recommenList = self.calculateRecommendataion(uid)
             # TODO: understand what thread.join() does and how to properly kill the thread
             ui_thread.join()
 
         # gracefully terminates when Ctrl-c is hit
         except KeyboardInterrupt:
             # print(ui_thread.isAlive())
+            self.db.closeDatabase()
             print("exiting")
             exit(0)
 
