@@ -65,11 +65,12 @@ text-align: center;
 font: Helvetica;
 }
 
-h1 {
+h1, h2{
 color: rgb(255, 255, 255);
 text-align: center; 
 font: Helvetica;
 }
+
 
 a {
     color: rgb(50, 37, 53);
@@ -87,57 +88,109 @@ margin-top: 40px;
 }
 
 .delete-form {
-text-align: center;
+    text-align: center;
 }
 
 .control-group {
-margin-bottom: 25px;
+    margin-bottom: 25px;
 }
 
 input {
-text-align: center;
-background-color: rgb(242, 237, 245);
-border: 2px solid transparent;
-border-radius: 3px;
-font-size: 16px;
-font-weight: 200;
-padding: 10px 0;
-width: 250px;
-transition: border .5s;
+    text-align: center;
+    background-color: rgb(242, 237, 245);
+    border: 2px solid transparent;
+    border-radius: 3px;
+    font-size: 16px;
+    font-weight: 200;
+    padding: 10px 0;
+    width: 250px;
+    transition: border .5s;
 }
 
 .btn {
-border: 2px solid transparent;
-background: rgb(132, 115, 143);
-color: #ffffff;
-font-size: 16px;
-line-height: 25px;
-padding: 10px 0;
-border-radius: 3px;
-transition: 0.25s;
-width: 250px;
-margin: 0 auto;
+    border: 2px solid transparent;
+    background: rgb(132, 115, 143);
+    color: #ffffff;
+    font-size: 16px;
+    line-height: 25px;
+    padding: 10px 0;
+    border-radius: 3px;
+    transition: 0.25s;
+    width: 250px;
+    margin: 0 auto;
 }
 
 .btn:hover {
-background-color: rgb(169, 161, 175);
+    background-color: rgb(169, 161, 175);
 }
 
 .alert{
-color: black;
-text-align: center;
-text-decoration: none;
-display: inline;
+    color: black;
+    text-align: center;
+    text-decoration: none;
+    display: inline;
 }
 
 .alert2{
-background-color: rgb(165, 153, 167);
-color:black;
-text-align: center;
-text-decoration: none;
-font-size: 10px;
-height: 15px;
-width: 15px;
+    background-color: rgb(165, 153, 167);
+    color:black;
+    text-align: center;
+    text-decoration: none;
+    font-size: 10px;
+    height: 15px;
+    width: 15px;
 }
 
-    
+table {
+    border-collapse: collapse;
+    width: 90%;
+}
+
+.recTitle{
+    color:black;
+    font-weight: bold;
+    text-align: center;
+    border-bottom: 1px solid rgb(251, 244, 251);
+}
+  
+td, .listenLink{
+    float: none !important;
+    text-align: center;
+    border-bottom: 1px solid rgb(251, 244, 251);
+}
+
+.rate {
+    float: right;
+    height: 46px;
+    padding: 0 5%;
+}
+.rate:not(:checked) > input {
+    position:absolute;
+    top:-9999px;
+}
+.rate:not(:checked) > label {
+    float:right;
+    width:1em;
+    overflow:hidden;
+    white-space:nowrap;
+    cursor:pointer;
+    font-size:30px;
+    color:#ccc;
+}
+.rate:not(:checked) > label:before {
+    content: '★ ';
+}
+.rate > input:checked ~ label {
+    color: #ffc700;    
+}
+.rate:not(:checked) > label:hover,
+.rate:not(:checked) > label:hover ~ label {
+    color: #deb217;  
+}
+.rate > input:checked + label:hover,
+.rate > input:checked + label:hover ~ label,
+.rate > input:checked ~ label:hover,
+.rate > input:checked ~ label:hover ~ label,
+.rate > label:hover ~ input:checked ~ label {
+    color: #c59b08;
+}

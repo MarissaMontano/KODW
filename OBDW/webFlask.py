@@ -1,15 +1,6 @@
-#!/usr/bin/env python3
-
-
-from flask import Flask, request, session, g, redirect, url_for, abort, \
-    render_template, flash
+from flask import Flask, request, session, g, redirect, url_for, abort, render_template, flash
 import requests
 import database
-
-#app.logger.debug('A value for debugging')
-#app.logger.warning('A warning occurred (%d apples)', 42)
-#app.logger.error('An error occurred')
-
 
 app = Flask(__name__)
 
@@ -25,7 +16,7 @@ def index():
         session.pop('_flashes', None)
 
     # if you're not logged in send to login page
-    if 'username' in session:
+    if 'userID' in session:
         #username = session['username']
         return home()
     # else send to homepage as that user
@@ -59,14 +50,16 @@ def login():
         password = request.form['password']
         db = database.Database(r"./OBDW.db")
         db.openDatabase()
-        allow = db.isValidUser(username, password)
-        db.closeDatabase()
+        allow = db.grabUserID(username, password)
+        
         # check if valid user,if so log them in, else ask them to login again
-        if allow:
-            session['username'] = username
+        if allow is not None:
+            session['userID'] = allow
+            app.config['SHARED'].record_refresh(session['userID'])
         else:
             flash('Incorrect username or password, please try again')
 
+        db.closeDatabase()
         return index()
     # they are trying to create a user
     else:
@@ -90,18 +83,20 @@ def create():
     password2 = request.form['password2']
     db = database.Database(r"./OBDW.db")
     db.openDatabase()
-    isCreated = db.createUser(username, password, password2)
-    db.closeDatabase()
+    db.createUser(username, password, password2)
+    allow = db.grabUserID(username, password)
 
-    # if sucsessful log them in
+    # If sucsessful log them in
     # TODO: return error codes, ir not a symbol, or cap, or numb, or to short, or user already exists, or OK.....instead of bool
-    if isCreated:
+    if allow is not None:
         flash('New account created successfully.')
-        session['username'] = username
-        return index()
+        session['userID'] = allow
+
     else:
         flash('Unsuccessful attempt, please try again')
-        return index()
+
+    db.closeDatabase()
+    return index()
 
 
 @app.route('/logout')
@@ -110,8 +105,8 @@ def logout():
         Input: None
         Output: index function to get to login page 
     '''
-    session.pop('username', None)
-    #app.config['SHARED'].stop()
+    session.pop('userID', None)
+    # app.config['SHARED'].stop()
     return index()
 
 # hack to use /delete.....TODO: fix it! no hacks allowed
@@ -136,41 +131,67 @@ def delete():
         return index()
 
     # Try to delete user
-    username = session['username']
+    uid = session['userID']
     password = request.form['password']
     db = database.Database(r"./OBDW.db")
     db.openDatabase()
-    uid = db.grabUserID(username, password)
     isDeleted = db.deleteUser(uid, password)
     db.closeDatabase()
 
     if isDeleted:
         flash('Account deleted successfully :(.')
-        session.pop('username', None)
+        session.pop('userID', None)
         return index()
     else:
         flash('Unsuccessful attempt, please try again')
         return index()
 
 
-@app.route('/test')
-def test():
+@app.route('/recommend')
+def recommend():
     ''' Function ...
         Input: None
         Output: 
     '''
-    return render_template('music.html')
+    recommendation =  app.config['SHARED'].recommenList
+    return render_template('music.html', recommendation = recommendation)
 
 
-@app.route('/music', methods=['POST'])
+@app.route('/music', methods=['POST', 'GET', 'PUT'])
 def music():
     ''' Function ...
         Input: None
         Output: 
     '''
-    app.config['SHARED'].record_click()
-    return index()
-    
+    # This means that they want the GUI
+    if request.method == 'PUT':
+        app.config['SHARED'].record_click(session['userID'])
+    # This means they want the page refreshed 
+    elif request.method == 'GET':
+        app.config['SHARED'].record_refresh(session['userID'])
+    else:
+        # save the ratings 
+        ratedSongs = []
+        for idx in range(10):
+            song = request.form.get('r'+str(idx)+'s', None)
+            rating = request.form.get('r'+str(idx), None)
+            if rating is not None:
+                ratedSongs.append([session['userID'], song, int(rating)])
+        db = database.Database(r"./OBDW.db")
+        db.openDatabase()
+        db.setUserSongData(ratedSongs)
+        db.closeDatabase()
+
+    return recommend()
+
+
+@app.route('/contact')
+def contact():
+    ''' Function ...
+        Input: None
+        Output: 
+    '''
+    return render_template('contact.html')
 
 
 @app.errorhandler(404)
@@ -180,6 +201,3 @@ def page_not_found(error):
         Output: None
     '''
     return render_template('page_not_found.html'), 404
-
-
-

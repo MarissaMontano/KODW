@@ -4,12 +4,52 @@
 {% endblock %}
 {% block body %}
 
-<h1>test the GUI</h1>
-
+<h1>Music Recommendations</h1>
 <form action="/music" method="POST">
+    <table class="recommendations">
+        <tr class="recTitle">
+        <td>Name</td>
+        <td>Artist</td>
+        <td>Link</td>
+        <td>Rating</td>
+        </tr>
+        {% for id, song, artist, link, idx in recommendation %}
+            <tr>
+                <td> {{ song }} </td>
+                <td> {{ artist }} </td>
+                <td> <a class="listenLink" href= {{ link }} > Listen</a></td>
+                <td> <div class="rate">
+                        
+                            <input type="radio" id={{idx}}+5  name={{idx}} value="5" />
+                            <label for={{idx}}+5  title={{idx}}>5 stars</label>
+                            <input type="radio" id={{idx}}+4  name={{idx}} value="4" />
+                            <label for={{idx}}+4 title={{idx}}>4 stars</label>
+                            <input type="radio" id={{idx}}+3  name={{idx}} value="3" />
+                            <label for={{idx}}+3 title={{idx}}>3 stars</label>
+                            <input type="radio" id={{idx}}+2  name={{idx}} value="2" />
+                            <label for={{idx}}+2 title={{idx}}>2 stars</label>
+                            <input type="radio" id={{idxe}}+1  name={{idx}} value="1" />
+                            <label for={{idx}}+1 title={{idx}}>1 star</label>
+                            <input name={{idx}}s value={{id}}>
+                    </div> 
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+    <input style="float: right;" type="submit" value="Save Ratings" class="btn btn-primary">
+ </form>
+<br> 
 
+
+<form action="/music" method="GET", style="float: left; padding-left:5%;">
     <div>
-        <input type="submit" value="Click me" class="btn btn-primary">
+        <input type="submit" value="Refresh" class="btn btn-primary">
+    </div>
+</form>
+
+<form action="/music" method="PUT", style="float: left; padding-left: 2%;">
+    <div>
+        <input type="submit" value="Configure app" class="btn btn-primary">
     </div>
 </form>
 
