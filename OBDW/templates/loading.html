@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> KODW</title>
+        <link rel="stylesheet" href="./static/style/baseStyle.css" type="text/css">
+    </head>
+    <body>
+        <div class="header">
+            <h1>Knock Off Discover Weekly</h1>
+        </div>
+        <hr>
+        <div class="links">
+            <div class="navbar">
+                <span class="bar">
+                    <a href="/home">Home page</a>
+                </span>
+                <span class="bar">
+                    <p>  |  </p>
+                </span>
+                <span class="bar">
+                    <a href="/logout">Logout</a>
+                </span>
+                <span class="bar">
+                    <p>  |  </p>
+                </span>
+                <span class="bar">
+                    <a href="/remove">Delete account</a>
+                </span>
+            </div>
+            <div class="vertical-menu">
+                <div class=vert><a href="/recommend">Music</a></div>
+                <div class=vert><a href="/about">About</a></div>
+                <div class=vert><a href="/contact">Contact Us</a></div>
+           </div> 
+        </div>
+        <div class="change">
+            {% block body %}
+                <h1>Music Recommendations</h1>
+                <div class=msg>
+                    {% with error = get_flashed_messages() %}
+                        {% if error %}
+                        <form method="post">
+                            <div class="alert">
+                                {{error[0]}}
+                            </div>
+                        </form>
+                        {% endif %}
+                    {% endwith %}
+                </div>
+            {% endblock%}
+        </div>
+            
+    </body>
+</html>
+
+
+

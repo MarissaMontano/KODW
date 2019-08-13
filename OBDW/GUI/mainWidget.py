@@ -9,11 +9,12 @@ import math
 class MainWidget(QWidget):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        # get screen size to make obj reletive instread of fixed    
+        # Get screen size to make obj reletive instread of fixed    
         sizeObject = QDesktopWidget().screenGeometry(-1)
         width = sizeObject.width()
         height = sizeObject.height()
 
+        # set initial Layouts
         mainLayout = QVBoxLayout(self)
         exitLayout = QHBoxLayout()
         cacheLayout = QVBoxLayout()
@@ -21,22 +22,21 @@ class MainWidget(QWidget):
         classLayout = QVBoxLayout()
         genreBox = QHBoxLayout()
 
-        # label for cache
+        # Label for cache
         cacheLable = QLabel(
             "Update Music Cache: Updating the music cache means you will pull new music from Spotify and update the databse")
         cacheLable.setAlignment(Qt.AlignCenter)
 
-        # button to update cache
-        cacheButton = QPushButton("Update Cache")
-        cacheButton.setFixedSize(QSize(width/14, height/30))
-        cacheButton.clicked.connect(self.handleCache)
+        # Button to update cache
+        self.cacheButton = QPushButton("Update Cache")
+        self.cacheButton.setFixedSize(QSize(width/14, height/30))
 
-        # label for genre
+        # Label for genre
         genreLable = QLabel(
             "Update Your Genres: Updating your genres means you will be recommended more music in these genres")
         genreLable.setAlignment(Qt.AlignCenter)
 
-        # table for genres
+        # Table for genres
         self.genreTable = QTableWidget()
 
         self.genreTable.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
@@ -70,7 +70,8 @@ class MainWidget(QWidget):
         self.genreTable.setColumnCount(6)
         self.genreTable.setSelectionMode(QAbstractItemView.MultiSelection)
         self.genreTable.setEditTriggers(QAbstractItemView.NoEditTriggers)
-        # set the table widget item in table and center the text.
+
+        # Set the table widget item in table and center the text.
         row = 0
         for i in range(len(genres)):
             if(i % 6 == 0 and i != 0):
@@ -79,13 +80,11 @@ class MainWidget(QWidget):
             types = QTableWidgetItem(genres[i])
             types.setTextAlignment(Qt.AlignCenter)
             self.genreTable.setItem(row, col, types)
-        # self.genreTable.setColumnWidth(width/14)
-
-        # label for classifier
+    
+        # Label for classifier
         classifierLable = QLabel(
-            "Update Your Classifier: Updating your classifier will change the algorithm used to get your recommendations. Please see the 'Help' tab to learn more.")
-        # classifierLable.setWordWrap(True)
-        classifierLable.setAlignment(Qt.AlignCenter)
+            "Update Your Classifier: Updating your classifier will change the algorithm used to get your recommendations.\n(Note: Please see the 'Help' tab to learn more)")
+        classifierLable.setAlignment(Qt.AlignLeft)
 
         # Combo box to select classifier
         self.classifierCombo = QComboBox()
@@ -94,7 +93,6 @@ class MainWidget(QWidget):
         self.classifierCombo.addItem("K-Nearest Neighbors")
         self.classifierCombo.addItem("RBF SVM")
         
-
         # Way to cancel and exit GUI
         self.cancelButton = QPushButton("Cancel")
         self.cancelButton.setFixedSize(QSize(width/18, height/25))
@@ -103,12 +101,12 @@ class MainWidget(QWidget):
         self.okButton = QPushButton("OK")
         self.okButton.setFixedSize(QSize(width/18, height/25))
 
-        # first layout to hold the main widget stuff
+        # First/Main layout to hold the main widget stuff
         mainLayout.addStretch(0)
         mainLayout.addSpacing(width/50)
         cacheLayout.addWidget(cacheLable)
         cacheLayout.addSpacing(width/90)
-        cacheLayout.addWidget(cacheButton)
+        cacheLayout.addWidget(self.cacheButton)
         cacheLayout.setAlignment(Qt.AlignLeft)
         mainLayout.addLayout(cacheLayout)
         mainLayout.addStretch(0)
@@ -130,7 +128,6 @@ class MainWidget(QWidget):
         mainLayout.addSpacing(width/50)
         mainLayout.addStretch(0)
         mainLayout.addLayout(exitLayout)
-
         mainLayout.setAlignment(Qt.AlignHCenter)
 
         # second layout for exiting cleanly
@@ -161,10 +158,9 @@ class MainWidget(QWidget):
         """
         self.okButton.setStyleSheet(buttonStyle)
         self.cancelButton.setStyleSheet(buttonStyle)
-        cacheButton.setStyleSheet(buttonStyle)
+        self.cacheButton.setStyleSheet(buttonStyle)
 
         self.classifierCombo.setStyleSheet(
-            "background-color: rgb(33,33,33);border:.5px solid black;")
+            "background-color: rgb(33,33,33);border:.5px solid black; color: gray;")
 
-    def handleCache(self):
-        print('@ cache')
+   

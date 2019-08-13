@@ -1,0 +1,35 @@
+
+{% extends "base.html" %}
+{% block head %}
+ {{ super() }}
+{% endblock %}
+{% block body %}
+<br> 
+<br> 
+<br> 
+<br> 
+<h2>When you want recommendations, but don't want them THAT accurate</h2>
+<br> 
+
+<img src="./static/sPoTiFy.png" alt="Bad Logo">
+
+
+<div>
+    <h4 style="text-align: left; padding-left: 5%;" >What is KODW?</h4>
+    <p style="text-align: left; padding-left: 5%;"> 
+        It's an app that allows you to get music recommendations based off of your music prefrences, 
+        the more data you put in the more accurate the output. This is a recommendation system based 
+        solely off of what genres you like, and how you have previously rated the other songs that you 
+        have been given. 
+    </p>
+    <br>
+    <h4 style="text-align: left; padding-left: 5%;" > How does it work?</h4>
+    <p style="text-align: left; padding-left: 5%;"> 
+        Based off of the genres you like and songs you rate, that data is fed into a classifier of 
+        your choice and then 10 new songs are selected for you based off of a pre-specified threshold 
+    </p>
+    <br>
+    <br>
+</div>
+
+{% endblock%}

@@ -162,7 +162,7 @@ td, .listenLink{
 .rate {
     float: right;
     height: 46px;
-    padding: 0 5%;
+    padding: 0 2%;
 }
 .rate:not(:checked) > input {
     position:absolute;
