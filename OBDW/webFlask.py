@@ -93,6 +93,7 @@ def create():
     if created:
         flash('New account created successfully.')
         session['userID'] = created
+        app.config['SHARED'].record_refresh(session['userID'])
         
     else:
         flash('Unsuccessful attempt, please try again')
@@ -153,7 +154,6 @@ def recommend():
         Output: render_template
     ''' 
     recommendation = app.config['SHARED'].recommenList 
-    print('grab list')
     return render_template('music.html', recommendation=recommendation)
 
 @app.route('/music', methods=['POST', 'GET', 'PUT'])
@@ -162,16 +162,16 @@ def music():
         Input: None
         Output: recommend function
     '''
+    #if request.method == 'GET':
+    #    if app.config['SHARED'].loading:
+    #        time.sleep(0.5)
+    #        print('still waiting')
+    #    else:
+    #        print('unflashed')
+    #       session.pop('_flashes', None)
+    #        waiting=False
 
     if request.method == 'POST':
-        if app.config['SHARED'].loading:
-            time.sleep(0.5)
-            print('still waiting')
-        else:
-            print('unflashed')
-            session.pop('_flashes', None)
-            waiting=False
-
         # save the ratings
         if request.form['music'] == "Save Ratings":
             ratedSongs = []
@@ -193,9 +193,9 @@ def music():
         elif request.form['music'] == "Configure app":
             app.config['SHARED'].record_click(session['userID'])
             app.config['SHARED'].loading = True
-            time.sleep(0.1)
-            flash("Loading...")
-            print('flashed')
+            time.sleep(0.3)
+            #flash("Loading...")
+            #print('flashed')
 
         # Refresh the page
         else:

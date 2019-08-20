@@ -1,18 +1,105 @@
-2019/08/20 15:15:52 - INFO - App Started, opening...
-2019/08/20 15:15:52 - INFO -  * Running on http://0.0.0.0:3000/ (Press CTRL+C to quit)
-2019/08/20 15:15:54 - INFO - 127.0.0.1 - - [20/Aug/2019 15:15:54] "GET / HTTP/1.1" 200 -
-2019/08/20 15:15:56 - DEBUG - New User is trying to login
-2019/08/20 15:15:56 - DEBUG - User requested to refresh list of recommendations
-2019/08/20 15:15:56 - INFO - 127.0.0.1 - - [20/Aug/2019 15:15:56] "POST /login HTTP/1.1" 200 -
-2019/08/20 15:15:56 - DEBUG - Starting to collect new recommendations
-2019/08/20 15:15:56 - DEBUG - Starting new HTTPS connection (1): api.spotify.com:443
-2019/08/20 15:15:56 - DEBUG - https://api.spotify.com:443 "GET /v1/recommendations?limit=50&seed_tracks=6FRwDxXsvSasw0y2eDArsz%2C0rsmlyJFeb3qiGxmD3jjEw%2C2Uu8IiLkLY0UXhCHka4Dlr%2C30Zcjs7pgEkmJA1lEbGSWT%2C4EWCNWgDS8707fNSZ1oaA5 HTTP/1.1" 200 None
-2019/08/20 15:15:56 - DEBUG - Starting new HTTPS connection (1): api.spotify.com:443
-2019/08/20 15:15:56 - DEBUG - https://api.spotify.com:443 "GET /v1/audio-features/?ids=2XHjFJVXYlEzoDvN82h8s5,7aKs8kWKKau0SDgaeyZMAX,77oU2rjC5XbjQfNe3bD6so,2tR3FMUgtCTWheiDNnLtMP,3w23sQ5FSzCKEviFYf0nSQ,3aImJnJlAgcE7bJ1NxthGt,43PuMrRfbyyuz4QpZ3oAwN,4bnjq8zqtCnxTGxll5ezOO,5AFOEeVJIUCeWEpEyzNuTL,7zBPzAjKAqQpcv8F8GCq5s,5J5PXmMdQ2nh1lZOal8KmK,0B8QzDH7YWih85V5SEMnyJ,4j1Bk0BEIGCF9hR7cSwl9d,6AGON2BGdPmPMJGiiNuuwl,4F7A0DXBrmUAkp32uenhZt,2dCD8qq7yHZPZduA8FJazs,174UISK3l7VRbigEHxEev7,0bYkU27BwhhKsTxmvqWUDo,7gvrsINoNbkAeI7u7KV1QB,1nGoy0cEj0extAwXYNYTWd,1nZkrUFLq265za9lofFO3p,5H6kQRRmrd5C7Pn4khGl3e,6yLX8QnxlnEqZfs3YKCfjF,35xSkNIXi504fcEwz9USRB,1IqFh00G2kvvMm8pRMpehA,1RUTIdTnFs8lHSc0Zr4UJB,1Ci4wASMY4xtKVMeHA6Sd5,0PAf4n8jN2Jo6QXcqirRVq,1eQBEelI2NCy7AUTerX0KS,5MtN38MGEWJt60LwtBmFNP,5RC9YDHON0nXKmcQrL6WV6,5dXmPzPDTMWmxmpzxAV1JZ,5rb9QrpfcKFHM1EUbSIurX,1UBQ5GK8JaQjm5VbkBZY66,4Vqd7MuPVrciqRS3EzhKWb,3IOQZRcEkplCXg6LofKqE9,5v7kaZNsnyByrSJOfO8gKq,6dW75XbJ1WAMljOXWjTK46,5Ru99vS2BaLyBCH1PXFiJo,6MdqqkQ8sSC0WB4i8PyRuQ,3KiEydhjn7yf58h9jBD5Sa,1jrcFSX7o78xEnuxnmvlCJ,2QtxlzvSBONjs1bDC34ixs,3a6n2q7NcrAwgrZT3UOW1K,04KTF78FFg8sOHC1BADqbY,3PzsLpCMpHViX7vxPtf4uE,5kkZl3e7K1WwxTdwo9t3QJ,7x6hO9VMAee9x1iWaeNkL6,27GmP9AWRs744SzKcpJsTZ,0cNJ3huiV99wvUN1tmQLTL HTTP/1.1" 200 None
-2019/08/20 15:15:57 - DEBUG - Done collecting new recommendations
-2019/08/20 15:15:57 - INFO - 127.0.0.1 - - [20/Aug/2019 15:15:57] "GET /recommend HTTP/1.1" 200 -
-2019/08/20 15:15:58 - DEBUG - User requested the GUI
-2019/08/20 15:15:58 - INFO - 127.0.0.1 - - [20/Aug/2019 15:15:58] "POST /music HTTP/1.1" 200 -
-2019/08/20 15:16:01 - DEBUG - User updated app prefrences
-2019/08/20 15:16:01 - DEBUG - Done update cache
-2019/08/20 15:16:03 - INFO - 127.0.0.1 - - [20/Aug/2019 15:16:03] "GET /recommend HTTP/1.1" 200 -
+2019/08/20 16:02:50 - INFO - App Started, opening...
+2019/08/20 16:02:50 - INFO -  * Running on http://0.0.0.0:3000/ (Press CTRL+C to quit)
+2019/08/20 16:02:50 - INFO - 127.0.0.1 - - [20/Aug/2019 16:02:50] "GET / HTTP/1.1" 200 -
+2019/08/20 16:02:52 - DEBUG - New User is trying to login
+2019/08/20 16:02:52 - INFO - 127.0.0.1 - - [20/Aug/2019 16:02:52] "POST /login HTTP/1.1" 200 -
+2019/08/20 16:02:52 - DEBUG - User requested to refresh list of recommendations
+2019/08/20 16:02:52 - DEBUG - Starting to collect new recommendations
+2019/08/20 16:02:52 - DEBUG - Starting new HTTPS connection (1): api.spotify.com:443
+2019/08/20 16:02:53 - DEBUG - https://api.spotify.com:443 "GET /v1/recommendations?limit=50&seed_tracks=0wrEpbtamvQTLIjDFkVQSl%2C4WiIscpBgQFm5qIyjoH7M4%2C5fQBa4wkmq28xpSLOQ202K%2C2TyCAfhwu5tRqFW8VnGMIL%2C6rbeWjEavBHvX2kr6lSogS HTTP/1.1" 200 None
+2019/08/20 16:02:53 - DEBUG - Starting new HTTPS connection (1): api.spotify.com:443
+2019/08/20 16:02:53 - DEBUG - https://api.spotify.com:443 "GET /v1/audio-features/?ids=5xLDmkobOw674TLTBBmnuN,47cQCF21TczFSmGfpd7c07,1cBs15tQeh4ewFqlwndESK,3bMNprrp2JDKZsGbiXpsJl,6lgzJuBX3iqevLdtgNlyAU,0cahtHEywK64NSWqm2SDTi,1zsxlqBfktCpTXK9CjUpyW,2VjXGuPVVxyhMgER3Uz2Fe,3XRosKfSgFSDIb6YVpApIl,4L1eqdFY10yO7tMzvRp0sx,22wKQbMH8n7wZfso2VcLJL,2NCBjlH7FHEG7hXcnvUaWA,2zAKjaFeTX0R3j57fTf8Ux,4kCvpSVa2XQUiarE7EE5Fs,2XiAlDIvYgudvl01wdpGRI,4F07ku5lMBIoybFPStM2j4,4zTHYH48021nSS4boLgVUG,1IlBPaXuM7Fl6tiH9CPQlQ,6dET51TwAJPrKV5wmA5Vhr,3HEn14GqygLCNfroOnYiZb,4ThyHM57HG7pnLudis9b0M,6nz35DNIzbtj5ztpDEcW1j,2ktg2oZDyFAX3iY1QNkXl5,3GQmoKZvsd2P3G5OJLAZCp,57K5RyWj4jOlc07wRz6axh,7M7IOOxwJpr6Fwf3YQbBCB,2r3W5VKpa07a52vvytL65Z,13VzICf1DZWrjNpCnzGtM9,646iHsrMsAeI48Z2qU8WKf,6H4xQW31txhCLT4iVO0kFq,73mlvsfJM2qwlDUJxeaatI,3CQ3l2jFuf1R2uQlpEn8Xt,5GG3knKdxKWrNboRijxeKF,3Eq7yD58dIXqOgw1j7NFhY,4vxm2gnST3bQer60vY1pJp,55DuTmvSGwNQR4cBgqYuYL,7DF2SSCuHoniuh5sPeMvkv,7yyRTcZmCiyzzJlNzGC9Ol,5dxHF4lrDimKqnI3GaZUmC,4mpAm83XX1iS63l8wmkEC6,6jmTHeoWvBaSrwWttr8Xvu,57Xjny5yNzAcsxnusKmAfA,7Cu2COdH93MnuireuKNiS3,1L8H6AuK4TaMmolSL0N0mR,7xi6IzpwkgtpenLzl5LMLc,4D7o2dM2OeEFXB1omK5aTF,6GCIYIWUBSLontW6divqsw,6thS0wvDRJtY4nQgbie4qy,4aX4Oycsk1fhHIee1zqsDe,0MAior6fZ9hfPgzjphQLXk HTTP/1.1" 200 None
+2019/08/20 16:02:53 - DEBUG - Done collecting new recommendations
+2019/08/20 16:02:54 - INFO - 127.0.0.1 - - [20/Aug/2019 16:02:54] "GET /recommend HTTP/1.1" 200 -
+2019/08/20 16:02:55 - DEBUG - User requested the GUI
+2019/08/20 16:02:55 - INFO - 127.0.0.1 - - [20/Aug/2019 16:02:55] "POST /music HTTP/1.1" 200 -
+2019/08/20 16:02:59 - DEBUG - User updated app prefrences
+2019/08/20 16:02:59 - DEBUG - Done update cache
+2019/08/20 16:03:00 - INFO - 127.0.0.1 - - [20/Aug/2019 16:03:00] "GET /logout HTTP/1.1" 200 -
+2019/08/20 16:03:09 - DEBUG - New User is trying to login
+2019/08/20 16:03:09 - INFO - 127.0.0.1 - - [20/Aug/2019 16:03:09] "POST /login HTTP/1.1" 200 -
+2019/08/20 16:03:09 - DEBUG - User requested to refresh list of recommendations
+2019/08/20 16:03:09 - DEBUG - Starting to collect new recommendations
+2019/08/20 16:03:09 - DEBUG - Starting new HTTPS connection (1): api.spotify.com:443
+2019/08/20 16:03:10 - DEBUG - https://api.spotify.com:443 "GET /v1/recommendations?limit=50&seed_genres=new-release HTTP/1.1" 200 None
+2019/08/20 16:03:10 - DEBUG - Starting new HTTPS connection (1): api.spotify.com:443
+2019/08/20 16:03:10 - DEBUG - https://api.spotify.com:443 "GET /v1/audio-features/?ids=3UWMvlNnUHjY48CfhvfOOg,0ENSn4fwAbCGeFGVUbXEU3,6HtYcBQNHDfMBh50NZnjBp,1kDVtWMDT5RnXHvymKgTyd,16cMQI1Z2zGbD37o6h7Zks,5mHTg6cqhyP0BmsTQKzN1X,3556vNt6SuQPqt15VFfRWv,5DNiREaQ1nrgi7Ckf8kuMP,7kD0Y5jtaX8zIsYHyxRNKW,27eKJ4RlK36novSUJQXlVH,6xIJG3cnd1O52dJTwtsBBl,3A2XKObGNiNjSZlQVv8Tq0,14c6Q17DoHUY4A2u9HlxxL,0EaqTZtx0wyKBT1VluOtCi,2aB6ePZ506uV0hQRdQaFHw,3EkqGwaDQg4vkMHtcNZvpC,0375PEO6HIwCHx5Y2sowQm,44cHg0JIrS144r7qLupD9o,6CXFCte6QUmKbElWdJdjbb,6TaqooOXAEcijL6G1AWS2K,0QCoA8f4gK0lGtGzCIrBjg,7c7ZiBHfWGloULZD03BfCR,5BtwZ441YUmUFzNDItE5nI,0TMWGCBG1KdnEGwQhagp3t,2DoAUg1ylfR1wRiQXzIJ44,2hr3kqWd9MJ1sWAhgCpzQf,6OXU517AeB6iYEMy10rRmr,38510fWvtOkrFjg2EDkJtT,6pVYsszLn9982fl6krM10h,6SSKR7x2un743k1L31c5bk,69i9zXmMHg8VdjyiX5Wu4H,347kBiR8vuCDICpW1TnjFk,3ACnarSkTKiOTj4rsnFkgf,4AZVyZIcNwRov50o2s1c0i,62WXjNnIqmHfcTIg6A2joZ,1PhvTwusCB7hHCLrP8mrll,2vDT1uU6hZgdp3PbWGr0Xy,6QS5GEuM3Nyowck5PawQvL,5PMbYk8qnxHk11VC8vKsF3,3yql0EiyLkOg6V1K1njp74,0UA6qu0q7LKR575c8nAkXP,4pBtffFohSRWLXPUTBojuP,1SC5nZeOBQ1weE86ho1Yxm,6yaopzMnKEEImSHWpFd1Vq,2JmvwF29iUVb3oEFW4Bvf3,2Pv7zg9cBPZvZuOrusG4bw,4NtdkNudAf9vuF9zzpeJiL,2w1FUzusLkDiSXqpWNcnhR,2khqMJ0UmmTCgiIjr8RhL3,6dMEkiUUCt09BeeSVgIkao HTTP/1.1" 200 None
+2019/08/20 16:03:10 - DEBUG - Done collecting new recommendations
+2019/08/20 16:03:13 - INFO - 127.0.0.1 - - [20/Aug/2019 16:03:13] "GET /recommend HTTP/1.1" 200 -
+2019/08/20 16:03:14 - DEBUG - User requested the GUI
+2019/08/20 16:03:14 - INFO - 127.0.0.1 - - [20/Aug/2019 16:03:14] "POST /music HTTP/1.1" 200 -
+2019/08/20 16:03:49 - DEBUG - User updated app prefrences
+2019/08/20 16:03:49 - DEBUG - Done update cache
+2019/08/20 16:03:52 - INFO - 127.0.0.1 - - [20/Aug/2019 16:03:52] "GET /recommend HTTP/1.1" 200 -
+2019/08/20 16:04:12 - DEBUG - Updating rated songs for a user
+2019/08/20 16:04:12 - INFO - 127.0.0.1 - - [20/Aug/2019 16:04:12] "POST /music HTTP/1.1" 200 -
+2019/08/20 16:04:14 - DEBUG - User requested to refresh list of recommendations
+2019/08/20 16:04:14 - DEBUG - Starting to collect new recommendations
+2019/08/20 16:04:14 - DEBUG - Starting new HTTPS connection (1): api.spotify.com:443
+2019/08/20 16:04:14 - DEBUG - https://api.spotify.com:443 "GET /v1/recommendations?limit=50&seed_genres=hip-hop%2Cr-n-b%2Cparty%2Cnew-release HTTP/1.1" 200 None
+2019/08/20 16:04:14 - DEBUG - Starting new HTTPS connection (1): api.spotify.com:443
+2019/08/20 16:04:14 - DEBUG - https://api.spotify.com:443 "GET /v1/audio-features/?ids=6lbhWl34Il0WXm5pX1fM9E,158DIbrVt4YbqNnWyRCS3P,3qKGvSu1inEZKwYQnMavNA,4NtdkNudAf9vuF9zzpeJiL,75ZvA4QfFiZvzhj2xkaWAh,1UHBcngfWo8hi3m003wZtX,7hpGGPTNTgdmyjtudEmLfX,5274I4mUMnYczyeXkGDWZN,4F1yvJfQ7gJkrcgFJQDjOr,5sv4LTz8qayQYnXlzaxg2x,3yS1KGdl2VA5bMBhqoOVLc,6pEROStfGkIV1sOAeWkUid,3SfZpKjMwvUQKGCty1dJ0T,71EHOyEOhNx1SzTebRRyng,0I3q5fE6wg7LIfHGngUTnV,1bunKc0fVAyPvQUf2lSo9v,3c7bUle1w9SAchAFUZ9n3o,36YutBq4lokWfRAFXJ6qrF,4J9u7UsXH7F6sFI32KnYuP,0ygfSHAl7aW40FHDQjSsD8,3s4U7OHV7gnj42VV72eSZ6,6JLcz9UGiVxAmEZXlCucn5,2w1FUzusLkDiSXqpWNcnhR,2zIkPM6r0yEjWt18qG3jP3,5gN2YGb1DOT5etfqwP66I3,1sl1cpix9GnwNwaVt04BIu,1zHlj4dQ8ZAtrayhuDDmkY,5iUQMwxUPdJBFeGkePtM66,6QS5GEuM3Nyowck5PawQvL,5kpnUpMNV9dPNCKY7JtW3Q,0yp6ui2sosUjCUro1rRk2Q,3TXy6nchgKeYlVwOKNk9lE,5Lm8wha7kmEuqyjJ237HNM,40AYRnDKhhrH4JZO4KS9Dj,6C7RJEIUDqKkJRZVWdkfkH,1MCem6JigI6jgQPMgriKbU,0UlHiqi7seV02XNHLMtfGK,1Za9Wnd3B2vzQEtv6aa0qD,1XHjU0TGIgl5lMFKAF25Y3,31bf9SEOppLU6lQ85d8om6,22NLm3IIR9NLG0cUYtmHMW,68LR4RQ7JLHwRodWxPOB0k,0iFOG4Ki9aDmJUYUFHQlPG,1l32mo5oW5oIRRjNnVJBNR,69i9zXmMHg8VdjyiX5Wu4H,0yQw3d0iQDjMrxaVHFv77J,0GteMc3A6Mo2BNvvLz4Z8B,6fbYL76UWbHdYq4B91TPQi,2MlcK8OgC5IpQz3l093YSR,4o7WXic8yAQWOV7iJXZ4jD HTTP/1.1" 200 None
+2019/08/20 16:04:14 - DEBUG - Done collecting new recommendations
+2019/08/20 16:04:15 - INFO - 127.0.0.1 - - [20/Aug/2019 16:04:15] "POST /music HTTP/1.1" 200 -
+2019/08/20 16:04:26 - DEBUG - Updating rated songs for a user
+2019/08/20 16:04:26 - INFO - 127.0.0.1 - - [20/Aug/2019 16:04:26] "POST /music HTTP/1.1" 200 -
+2019/08/20 16:04:27 - DEBUG - User requested to refresh list of recommendations
+2019/08/20 16:04:27 - DEBUG - Starting to collect new recommendations
+2019/08/20 16:04:27 - DEBUG - Starting new HTTPS connection (1): api.spotify.com:443
+2019/08/20 16:04:27 - DEBUG - https://api.spotify.com:443 "GET /v1/recommendations?limit=50&seed_tracks=3UWMvlNnUHjY48CfhvfOOg%2C3556vNt6SuQPqt15VFfRWv%2C158DIbrVt4YbqNnWyRCS3P%2C1UHBcngfWo8hi3m003wZtX%2C7hpGGPTNTgdmyjtudEmLfX HTTP/1.1" 200 None
+2019/08/20 16:04:27 - DEBUG - Starting new HTTPS connection (1): api.spotify.com:443
+2019/08/20 16:04:28 - DEBUG - https://api.spotify.com:443 "GET /v1/audio-features/?ids=1o8jNa1Rsgh0iI9KQKRDHN,6XAA7T9VHcqKQSzjmXAJ8o,6GG2tkV9PRYGN5rniXPFXZ,6Mo7ueMo1M334IEZA70uGY,2uujJLrRplaQMkEx8CybZ8,7N1Vjtzr1lmmCW9iasQ8YO,17vQTNbvhpvi92qOnDOFHB,7tkqxOV765aQ6s45fBijjt,60ZZNXIdwgUGkVGRt7foLT,5KD2kEIWSyfFvxTZfhlVka,7iL6o9tox1zgHpKUfh9vuC,7rFe0uEHuONOTavUfaxEcS,3jUdqLNmjpqJvti99ygpSs,0LWkaEyQRkF0XAms8Bg1fC,4IeUAegXVbETb7FpgNDnSM,6Dy6L7C0OJQnoz40AfaFZO,2chyJjEMYj397jz1QLEGO7,3TgUmYALtbV9LpLj7KQMLi,6dHatCnuOb1TdBIeJTK3Y0,6MMuI4k4Vs5ghtDH5i2hBg,1GMDpf82TUwTVBPYiu0dmR,1rylJ0VXvhOzLGNm401iaI,26xtHEq40YTfjAij523Ml6,4B4zDmbHdkXZ1wUJv1yKFy,49zD0wr2S3d0lZPib0K4e1,09wQdd0JQbkp9yKfRfwhjG,1TpeT2PWnAv9NDbqK1qy6J,0qmYhfRmXWaONXN6ps27PP,6WSBZroxQaO3FYEpT2ACFH,5rX9fqEGsHnQeEEsc1Cc3J,1Y4ZdPOOgCUhBcKZOrUFiS,4IXiFMhtXEbSEG8UoAeTwD,6jizk5lOUnfpaZXYMdfeC6,1yYYIilGsCoijulZUZpllx,3jkdQNkDTxxXtjSO4l0o1H,2Yslb5NGqlZ8dC94ARxivO,5Ue25r0VGvZR7vaw3iB0gZ,2JJ5h2I1S0UR4tyD0U1I7K,22BwaoGHQOTfFhHTndm7DQ,7yMhyRmQGv6mSD6SkfhPeF,6js4GbrJjNU0Kp5ipDQ9vc,1hWYT0w2R0J19rlVkiez7X,2IUylG1WDsYWbMwH3HKuQo,4q6dqyGM25sKFU8nYAGRe4,0dyWQoMOU9oERL6c9vxtRp,5qEzf9tBursDHplB2FhzVy,3Feec7M9kLXDHag4iZcBxU,0wbrvlS9RZ79iFdH88gXtK,1GIN41bLhiKeEPeC2vXH8i,0z5ZPs57J2KERwM1tBM2GF HTTP/1.1" 200 None
+2019/08/20 16:04:28 - DEBUG - Done collecting new recommendations
+2019/08/20 16:04:28 - INFO - 127.0.0.1 - - [20/Aug/2019 16:04:28] "POST /music HTTP/1.1" 200 -
+2019/08/20 16:04:35 - DEBUG - Updating rated songs for a user
+2019/08/20 16:04:35 - INFO - 127.0.0.1 - - [20/Aug/2019 16:04:35] "POST /music HTTP/1.1" 200 -
+2019/08/20 16:04:37 - DEBUG - User requested to refresh list of recommendations
+2019/08/20 16:04:37 - DEBUG - Starting to collect new recommendations
+2019/08/20 16:04:37 - DEBUG - Starting new HTTPS connection (1): api.spotify.com:443
+2019/08/20 16:04:37 - DEBUG - https://api.spotify.com:443 "GET /v1/recommendations?limit=50&seed_tracks=3556vNt6SuQPqt15VFfRWv%2C158DIbrVt4YbqNnWyRCS3P%2C7hpGGPTNTgdmyjtudEmLfX%2C17vQTNbvhpvi92qOnDOFHB%2C60ZZNXIdwgUGkVGRt7foLT HTTP/1.1" 200 None
+2019/08/20 16:04:37 - DEBUG - Starting new HTTPS connection (1): api.spotify.com:443
+2019/08/20 16:04:37 - DEBUG - https://api.spotify.com:443 "GET /v1/audio-features/?ids=4IowQDUOzUvNtp72HMDcKO,4P7VFiaZb3xrXoqGwZXC3J,4IXiFMhtXEbSEG8UoAeTwD,2jKoVlU7VAmExKJ1Jh3w9P,1ML2r3gzmd9776dmnlGYlh,3sTN90bIP2cJ1783ctHykO,46n2EGFnPC3tzWCN1Aqe26,0B2ZuTLZnWQ6gz8RlNwBu1,5KWV7S3osWbeOMPHCeWVyK,2RUuKIHFHjk41E7YsJ9HNP,2uujJLrRplaQMkEx8CybZ8,1MQ8ydvrTnn2QJgXFATJvD,03tqyYWC9Um2ZqU0ZN849H,4eTrsNi7zhPXMpJPCLGruc,1KZ0Xo6Mmeprp1Sw5xCHYz,06UPCXzhIsXnceSXmKLMEY,7gDwRzJhLs0fFHaGtMDJVM,1BjiBbVzBMREvXiT6X5tHi,31G9RaSaDOI2NWcpnIp734,1XhLw67ugntZ0BeIBzvimO,6HMHgBHdLBQ0QYIaOp2gse,4UmHbauXS8YYIGlYvAsDRr,6e2cZadrpYLe635arJ4ywB,4j8NMLIzPyNtGDmVBcz5ER,21iL1HD3h5AXGdSZABFd8t,6AIte2Iej1QKlaofpjCzW1,5WoaF1B5XIEnWfmb5NZikf,1MhvXD8haSvwaAWKuXXhfl,6HicBL9RxtWwNK7sS2AHHU,5hg3xm9mxcz9Xb6r59y9Ow,6js4GbrJjNU0Kp5ipDQ9vc,5LuXEmya3JlX3ZfdudPAbO,0D8Npw3PzW1srmITkELL3s,1vup3vAmSmFLxSIzGOM38V,3nlVjrlLMJHC7Flf9impf9,6KgUTeThu8Wq1yQ7092m5B,2Fw5S2gaOSZzdN5dFoC2dj,2JJ5h2I1S0UR4tyD0U1I7K,1CwNogTShsnsn1C8UhRmYX,5Ue25r0VGvZR7vaw3iB0gZ,0R3OnUm6RgIpRFcckCoi0x,3Eq7yD58dIXqOgw1j7NFhY,0MFj1bBmr0c1JN99Htn0OY,550JPXXPgjr1xqxtKIaX6b,1GIN41bLhiKeEPeC2vXH8i,6T8hReA77yDV3QRV3GlLCh,48EjSdYh8wz2gBxxqzrsLe,3GGg9FWBlAjrAvC16kazer,7G0PgkkbavF7Rh4zNrUxH0,0PXp9QxBfSKGGpWUNaws2X HTTP/1.1" 200 None
+2019/08/20 16:04:37 - DEBUG - Done collecting new recommendations
+2019/08/20 16:04:37 - INFO - 127.0.0.1 - - [20/Aug/2019 16:04:37] "POST /music HTTP/1.1" 200 -
+2019/08/20 16:04:42 - DEBUG - User requested to refresh list of recommendations
+2019/08/20 16:04:42 - DEBUG - Starting to collect new recommendations
+2019/08/20 16:04:42 - DEBUG - Starting new HTTPS connection (1): api.spotify.com:443
+2019/08/20 16:04:42 - DEBUG - https://api.spotify.com:443 "GET /v1/recommendations?limit=50&seed_tracks=7hpGGPTNTgdmyjtudEmLfX%2C3556vNt6SuQPqt15VFfRWv%2C1UHBcngfWo8hi3m003wZtX%2C3UWMvlNnUHjY48CfhvfOOg%2C7tkqxOV765aQ6s45fBijjt HTTP/1.1" 200 None
+2019/08/20 16:04:42 - DEBUG - Starting new HTTPS connection (1): api.spotify.com:443
+2019/08/20 16:04:42 - DEBUG - https://api.spotify.com:443 "GET /v1/audio-features/?ids=1CwNogTShsnsn1C8UhRmYX,6GG2tkV9PRYGN5rniXPFXZ,2i9q8CteBmpslOJeQdMGqA,5GHb5qmXRlQcqc3bLBh3XK,4S7YHmlWwfwArgd8LfSPud,0MFj1bBmr0c1JN99Htn0OY,3xJj1mU7B83yop2dA03Smk,2ipJSuGf1GtxSIt2KvOGxl,276zciJ7Fg7Jk6Ta6QuLkp,1rW6UUZRQWW34j4zCQDkfX,7lg0XrvUawyMBRv13zwALu,4IXiFMhtXEbSEG8UoAeTwD,5D2mYZuzcgjpchVY1pmTPh,4NjR63Up0uMkQBlKvlZd1l,5t54WbqXtMwT5yF1nQSuKz,1r1fPuhj9H4VdXr7OK6FL5,5n5uyFpfopa4mNdSN0gTaH,1yQunV0upd4Eyu3rcOerD9,60ZZNXIdwgUGkVGRt7foLT,2iAPQ5Stbj7CIUThV8Udxq,4oowvb1qhRTkIQkJsO7qfc,7rFe0uEHuONOTavUfaxEcS,6HMHgBHdLBQ0QYIaOp2gse,5l3CML2OnzfNs5RfVgbcLt,7yMhyRmQGv6mSD6SkfhPeF,49zD0wr2S3d0lZPib0K4e1,2VQc9orzwE6a5qFfy54P6e,40rvBMQizxkIqnjPdEWY1v,7gDwRzJhLs0fFHaGtMDJVM,2LvRR121MWFmmEGkuV2vQP,6ctwAh5yRyxCvMmyVR5BOa,5eFxwmqKrHpSQDOEIFYlgY,4IeUAegXVbETb7FpgNDnSM,2y292SsIKqyBnII5TZuhv7,0bHA8LApeZHv7ZlhVUWg8X,67qn3OtziLlpOtVZ22EiQ4,1MhvXD8haSvwaAWKuXXhfl,3dTwLV3pAQ3OhEKPVG42fx,0uFvvXbmGIXlf5ZgtHyYpf,6G8ybvaNEW2nn1wMzvKjRc,3elZjWWqIVijinJPXVzO4E,4uToWVHXLtKEEboNsG3n2u,6fUHMhwKBSmetq2T1PvCKK,2npJP0YTkykkqjezhA1g8f,4K4l4lbc7LX6NjXxFp7E4c,5fu9WzCJm7cKoU0zUrCfi3,66TRwr5uJwPt15mfFkzhbi,7xYy4fuiPfFEAsjz3H93Sl,2oHxuNlj8cdpqxpum3DWkj,7iwiTEn7PJYhB4vf3szzAN HTTP/1.1" 200 None
+2019/08/20 16:04:42 - DEBUG - Done collecting new recommendations
+2019/08/20 16:04:43 - INFO - 127.0.0.1 - - [20/Aug/2019 16:04:43] "POST /music HTTP/1.1" 200 -
+2019/08/20 16:04:48 - DEBUG - User requested to refresh list of recommendations
+2019/08/20 16:04:48 - DEBUG - Starting to collect new recommendations
+2019/08/20 16:04:48 - DEBUG - Starting new HTTPS connection (1): api.spotify.com:443
+2019/08/20 16:04:48 - DEBUG - https://api.spotify.com:443 "GET /v1/recommendations?limit=50&seed_tracks=60ZZNXIdwgUGkVGRt7foLT%2C17vQTNbvhpvi92qOnDOFHB%2C3UWMvlNnUHjY48CfhvfOOg%2C7hpGGPTNTgdmyjtudEmLfX%2C3556vNt6SuQPqt15VFfRWv HTTP/1.1" 200 None
+2019/08/20 16:04:48 - DEBUG - Starting new HTTPS connection (1): api.spotify.com:443
+2019/08/20 16:04:48 - DEBUG - https://api.spotify.com:443 "GET /v1/audio-features/?ids=40yJGQyEaBbIkXpwMFkXip,3SwhPTNNU5hpF33bbCsji6,4gFxywaJejXWxo0NjlWzgg,3VeuvRWfJLSOzeVPrgi5MR,6MreoQf8oixWI2xRcw3Fv1,4NpDZPwSXmL0cCTaJuVrCw,34PsixEmIceg39NpaYxBsH,684QDmRWzF4p2bICP68oou,7lT9KJpfzMTNi9702WuNI8,3elZjWWqIVijinJPXVzO4E,6kP92fKzIyVJtNobCRsZ6G,6Lr9sGM6kARYVDL2dj0lqV,1rEHQCkmLYY0CDrIborSoF,1eu6vM3Q8wYKGYZCn26uMb,5hTpBe8h35rJ67eAWHQsJx,5fu9WzCJm7cKoU0zUrCfi3,1CwNogTShsnsn1C8UhRmYX,2h3i5tGUl6hMu572umjcGo,7zBPzAjKAqQpcv8F8GCq5s,16e3Ly7ddGqqnFDiWWWwnc,2RISD4aJrioDB54exm5WWM,6NHWP1FmqHgbHQap4Fyp2G,7fjLBPTsQrbkV2WRedi2bw,0tZPbskqU5QcJnZHv0f03Z,0MFj1bBmr0c1JN99Htn0OY,5v0C3nNNDMhZ3nWzzP0W4T,66TRwr5uJwPt15mfFkzhbi,6fUHMhwKBSmetq2T1PvCKK,7L9g4cPfohScjJ8mGwLQWr,2y292SsIKqyBnII5TZuhv7,7e5z8Set6bsGDh8KIsZnoX,1POAx4NMLOBPVKZUSsBh92,0osPX8TruIebOhKuG6GK8C,789CxjEOtO76BVD1A9yJQH,7xYy4fuiPfFEAsjz3H93Sl,7qFhAfUbytgPIVz4TYb3hT,21pNGvUyQ8NjcfRrzge25F,1PjKowBEfdICVBaxJDPsvm,2LgyWjzJPkkLOQAkV9K9RP,6T8hReA77yDV3QRV3GlLCh,3eze1OsZ1rqeXkKStNfTmi,6BOtDFg6GJm0rPUDuNmx57,2MF4HtZHBoUliOi9nOAbS0,4KhanrenBxgyXYkFCArMyd,22h5rCTgn2V8y0qV6DcPSh,1ULa3GfdMKs0MfRpm6xVlu,3KiEydhjn7yf58h9jBD5Sa,0ZPfDxZn5O0L84wvPSN2iG,2JJ5h2I1S0UR4tyD0U1I7K,7jmRaRTtDMhV6Yh9KuEHsp HTTP/1.1" 200 None
+2019/08/20 16:04:49 - DEBUG - Done collecting new recommendations
+2019/08/20 16:04:49 - INFO - 127.0.0.1 - - [20/Aug/2019 16:04:49] "POST /music HTTP/1.1" 200 -
+2019/08/20 16:04:53 - DEBUG - User requested to refresh list of recommendations
+2019/08/20 16:04:53 - DEBUG - Starting to collect new recommendations
+2019/08/20 16:04:53 - DEBUG - Starting new HTTPS connection (1): api.spotify.com:443
+2019/08/20 16:04:53 - DEBUG - https://api.spotify.com:443 "GET /v1/recommendations?limit=50&seed_tracks=158DIbrVt4YbqNnWyRCS3P%2C17vQTNbvhpvi92qOnDOFHB%2C1UHBcngfWo8hi3m003wZtX%2C3UWMvlNnUHjY48CfhvfOOg%2C3556vNt6SuQPqt15VFfRWv HTTP/1.1" 200 None
+2019/08/20 16:04:53 - DEBUG - Starting new HTTPS connection (1): api.spotify.com:443
+2019/08/20 16:04:53 - DEBUG - https://api.spotify.com:443 "GET /v1/audio-features/?ids=4S7YHmlWwfwArgd8LfSPud,3EApebexZ7YqDIqw2EMTDh,5tZmLjU4vhPlJb12IweZuB,7yMhyRmQGv6mSD6SkfhPeF,1EM23A621Z0QyTlWKu7T1l,7iaw359G2XT14uTfV9feip,785t3poQsvdkSeH5xGA9R4,4Onlx3t98YDeu8bM7wRS5K,50xeLNGKmskmYUSINhqvfa,2Yslb5NGqlZ8dC94ARxivO,32lmL4vQAAotg6MrJnhlQZ,6Mo7ueMo1M334IEZA70uGY,2OBKvpCTPo0q4qQELJ1n7h,61RnPNHdba0aB7Itq2qCut,2bocAPQcUTLUXx8lAOTiK3,1r1fPuhj9H4VdXr7OK6FL5,46n2EGFnPC3tzWCN1Aqe26,5oXsLCXnF1VHp36tyWfYs3,10SUWedx0zohs8M3OJpnA7,0rBMP6VVGRgwnzZCLpijyl,2FaEEdFTp6Ub0oojqjpSif,564oa00vY05d1uYnTEAAmE,7qqOmEfeTPgjBsm1Qm98eg,0uFvvXbmGIXlf5ZgtHyYpf,1ML2r3gzmd9776dmnlGYlh,684QDmRWzF4p2bICP68oou,1jypmXUJgxWKWJZdDsJiXQ,03tqyYWC9Um2ZqU0ZN849H,1MhvXD8haSvwaAWKuXXhfl,65gLItwnVZpbl52nO10eFI,1PVza5KmhSJhz12OewWciE,6m49tZii9UUttOgDozxjI1,6HicBL9RxtWwNK7sS2AHHU,7xYy4fuiPfFEAsjz3H93Sl,5qEzf9tBursDHplB2FhzVy,6K0LB4XItoRSkKZSkVTS4d,0pNMYo9MXmyyR9Fp9HwiBT,7EdDkJ51zQssIvniwLdjQg,5f6esnDQcBiFAm8iMfkw12,3hBK6nZq22px2RjGqDqt4E,5t54WbqXtMwT5yF1nQSuKz,3UOuBNEin5peSRqdzvlnWM,2fWSwWmKRuyioqIzOzuQGo,2VQc9orzwE6a5qFfy54P6e,6e2cZadrpYLe635arJ4ywB,1Y4ZdPOOgCUhBcKZOrUFiS,2ztyTz3H928W2bVb9qXBlB,5Sm1X46tna50RstHZvw072,2RISD4aJrioDB54exm5WWM,1o8jNa1Rsgh0iI9KQKRDHN HTTP/1.1" 200 None
+2019/08/20 16:04:53 - DEBUG - Done collecting new recommendations
+2019/08/20 16:04:54 - INFO - 127.0.0.1 - - [20/Aug/2019 16:04:54] "POST /music HTTP/1.1" 200 -
+2019/08/20 16:05:01 - DEBUG - User requested to refresh list of recommendations
+2019/08/20 16:05:01 - DEBUG - Starting to collect new recommendations
+2019/08/20 16:05:01 - DEBUG - Starting new HTTPS connection (1): api.spotify.com:443
+2019/08/20 16:05:01 - DEBUG - https://api.spotify.com:443 "GET /v1/recommendations?limit=50&seed_tracks=7hpGGPTNTgdmyjtudEmLfX%2C158DIbrVt4YbqNnWyRCS3P%2C17vQTNbvhpvi92qOnDOFHB%2C7tkqxOV765aQ6s45fBijjt%2C3UWMvlNnUHjY48CfhvfOOg HTTP/1.1" 200 None
+2019/08/20 16:05:01 - DEBUG - Starting new HTTPS connection (1): api.spotify.com:443
+2019/08/20 16:05:01 - DEBUG - https://api.spotify.com:443 "GET /v1/audio-features/?ids=5ML9t3cfvJuDTeOLcOH2Bl,3elZjWWqIVijinJPXVzO4E,7dGG7W2p1qUzbf7KwZBAsZ,1GMDpf82TUwTVBPYiu0dmR,3KiEydhjn7yf58h9jBD5Sa,0n0HybfiBU3YDQNVtWugtm,60wK3ylmnDG9MqbnMqbupZ,3au0pvHqcTtszysswan6AO,6MreoQf8oixWI2xRcw3Fv1,6h6U4mLKP6sVg4yNjfd3LA,1eL8wZKx7CVJVbZG12becL,4PFWDQTCDV6DqUYHVdupPt,2bSF5Qs8IQE9RRaZIef7mO,1jG29zp5Xmo9PdDdf1b6mO,2NVt7fxr5GsqTkGwYXcNTE,2p9sprAX27D6U5cuSE9NsM,0cNJ3huiV99wvUN1tmQLTL,09GCuO9yQH5R1E8HYknrV8,57kdeoYzgGaKzRWj4XM1u8,7cFpB4ozcSwXuhqjvNbrbP,6I0XPgr0SFHQcKy9v7Gf0K,6HfOzLLjsaXsehIFEsrxTk,1KZ0Xo6Mmeprp1Sw5xCHYz,5KWV7S3osWbeOMPHCeWVyK,5f6esnDQcBiFAm8iMfkw12,03tqyYWC9Um2ZqU0ZN849H,3SEZgDncfa1sqjThdI9JcJ,3e21cX0CVwzkQXiHz7WUQZ,2fCZkUscIJQSFVnqA9xlOF,1xIxMz1sNQ4b6svH1GuTtF,5gdy0ytFSBQykiYc5NmhJL,2iDjCLUOGhJtz5cPHljGVd,1qJjofprTOxvqkIAdDixaP,5Ue25r0VGvZR7vaw3iB0gZ,0XNQrfvkJKyj7PNEsVH7Gf,1rylJ0VXvhOzLGNm401iaI,65eohvrL4ttjA7EfFkQOhX,1POAx4NMLOBPVKZUSsBh92,3dTpCTapp53S88tyMOVosR,7rNOe6TJhf2INSLF1fdlSk,55DuTmvSGwNQR4cBgqYuYL,09wQdd0JQbkp9yKfRfwhjG,7qqOmEfeTPgjBsm1Qm98eg,06FCvd7rrRcF3DdvWH5Isp,4IXiFMhtXEbSEG8UoAeTwD,7N1Vjtzr1lmmCW9iasQ8YO,5zwz05jkQVT68CjUpPwFZe,7Ezwtgfw7khBrpvaNPtMoT,2Fw5S2gaOSZzdN5dFoC2dj,6e2cZadrpYLe635arJ4ywB HTTP/1.1" 200 None
+2019/08/20 16:05:01 - DEBUG - Done collecting new recommendations
+2019/08/20 16:05:01 - INFO - 127.0.0.1 - - [20/Aug/2019 16:05:01] "POST /music HTTP/1.1" 200 -
+2019/08/20 16:05:19 - INFO - 127.0.0.1 - - [20/Aug/2019 16:05:19] "GET /music/nlah HTTP/1.1" 404 -
+2019/08/20 16:05:19 - INFO - 127.0.0.1 - - [20/Aug/2019 16:05:19] "GET /music/static/style/404Style.css HTTP/1.1" 404 -
+2019/08/20 16:05:23 - INFO - 127.0.0.1 - - [20/Aug/2019 16:05:23] "GET / HTTP/1.1" 200 -
+2019/08/20 16:05:28 - INFO - 127.0.0.1 - - [20/Aug/2019 16:05:28] "GET /hey HTTP/1.1" 404 -
+2019/08/20 16:05:28 - INFO - 127.0.0.1 - - [20/Aug/2019 16:05:28] "GET /static/style/404Style.css HTTP/1.1" 304 -
+2019/08/20 16:05:32 - INFO - 127.0.0.1 - - [20/Aug/2019 16:05:32] "GET / HTTP/1.1" 200 -
+2019/08/20 16:05:35 - INFO - 127.0.0.1 - - [20/Aug/2019 16:05:35] "GET /about HTTP/1.1" 200 -
+2019/08/20 16:05:36 - INFO - 127.0.0.1 - - [20/Aug/2019 16:05:36] "GET /contact HTTP/1.1" 200 -
+2019/08/20 16:05:39 - INFO - 127.0.0.1 - - [20/Aug/2019 16:05:39] "GET /recommend HTTP/1.1" 200 -
+2019/08/20 16:05:47 - INFO - App stopped, exiting...

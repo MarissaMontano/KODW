@@ -9,7 +9,7 @@ import sys
 class MainWindow(QMainWindow):
     def __init__(self, genreList = [], *args, **kwargs):
         super().__init__(*args, **kwargs)
-
+        self.genreList = genreList
         # Palette stuff - text white, background dark gray
         self.palette = self.palette()
         self.palette.setColor(QPalette.Window, QColor(27, 27, 27))
@@ -42,11 +42,11 @@ class MainWindow(QMainWindow):
         helpMenu.addMenu(classifierMenu)
         helpMenu.addAction(closeAction)
         helpMenu.setStyleSheet("""
-            QMenu::item {background-color: rgb(33, 33, 33); color: rgb(126, 126, 126); }
+            QMenu::item {background-color: rgb(33, 33, 33); color: rgb(126, 126, 126);}
             QMenu::item:pressed {color: rgb(255,255,255);}
             QMenu::item:selected {color: rgb(255,255,255);}""")
         mainMenu.setStyleSheet("""
-            QMenuBar{background-color: rgb(33, 33, 33);color: rgb(126, 126, 126); }
+            QMenuBar{background-color: rgb(33, 33, 33);color: rgb(126, 126, 126);}
             QMenuBar::item:pressed {color: rgb(255,255,255);}
             QMenuBar::item:selected {color: rgb(255,255,255);}""")
 
@@ -56,7 +56,7 @@ class MainWindow(QMainWindow):
         self.resize(width/.6, height/.6)
 
         # Default to showing the main widget first
-        self.startMainWidget(genreList)
+        self.startMainWidget()
 
 
     def startKNearest(self):
@@ -101,7 +101,7 @@ class MainWindow(QMainWindow):
         self.setCentralWidget(self.basicWidget)
         self.show()
 
-    def startMainWidget(self, genreList):
+    def startMainWidget(self):
         ''' Method to show the main widget templet that lets you choose classifiers, genres, and update the cache 
 
                 Input:  None
@@ -110,7 +110,7 @@ class MainWindow(QMainWindow):
         # Set title, style and widget   
         self.setWindowTitle("OBDW")
         self.setStyleSheet('background-color: rgb(27, 27, 27);')
-        self.mainWidget = MainWidget(genreList)
+        self.mainWidget = MainWidget(self.genreList)
 
         #set button functionality 
         self.mainWidget.cancelButton.clicked.connect(self.close)
