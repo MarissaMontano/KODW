@@ -1,5 +1,5 @@
 
-#!/usr/bin/env Python3
+#!/usr/bin/env python3
 
 import spotipy
 import spotipy.util as util
