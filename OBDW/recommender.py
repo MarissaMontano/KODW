@@ -160,7 +160,6 @@ class Recommender(object):
             self.updateSongData(newSongs)
         else:
             pass
-        print('Done')
         self.logger.debug('Done update cache')
 
     def updateSongData(self, newSongs):

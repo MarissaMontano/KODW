@@ -247,21 +247,9 @@ class Database(object):
                         newGenreList (list of strings)
                 Output: True
         '''
-        # Get genres from past selections
-        oldGenreList = self.getUserGenres(userID)
-        
-        # Delete unselected genres
-        for genre in oldGenreList:
-            if genre not in newGenreList:
-                oldGenreList.remove(genre)
-        # Add newly selected ones 
-        for genre in newGenreList:
-            if genre not in oldGenreList:
-                oldGenreList.append(genre)
-          
         # update the genre list with new genres not already in the list
         self.cursor.execute(
-            '''UPDATE User SET Genres = ? WHERE User_ID = ? ''', (str(oldGenreList), userID))
+            '''UPDATE User SET Genres = ? WHERE User_ID = ? ''', (str(newGenreList), userID))
         return True
 
     def songExists(self, song_id):
