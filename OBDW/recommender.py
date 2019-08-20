@@ -24,6 +24,7 @@ import database
 DIR = os.path.dirname(os.path.abspath(__file__))
 CFG_FILE_PATH = os.path.join(DIR, 'OBDW_config.cfg')
 
+
 class Recommender(object):
 
     def __init__(self):
@@ -41,6 +42,7 @@ class Recommender(object):
         connectStr = os.path.join(DIR, db_cfg['Connection_str'])
         self.db = database.Database(connectStr, db_cfg['Check_thread'])
         self.db.openDatabase()
+        self.db.setupTables()
 
         # start instance of spotify api
         auth = SpotifyClientCredentials(
@@ -53,11 +55,10 @@ class Recommender(object):
         self.classifier = GradientBoostingClassifier(
             n_estimators=int(self.class_cfg['N_estimators']), learning_rate=float(self.class_cfg['Learning_rate']), max_depth=int(self.class_cfg['Max_depth']), random_state=int(self.class_cfg['Random_state']))
 
-        # Set logging
+        # Set logging and formatter
         logging.basicConfig(filename=os.path.join(DIR, log_cfg['Path']),
-                            filemode=log_cfg['Filemode'], format=log_cfg['Format'], level=log_cfg['Level'])
+                            filemode=log_cfg['Filemode'], format=log_cfg['Fmt'], datefmt=log_cfg['Date_fmt'], level=log_cfg['Level'])
         self.logger = logging.getLogger(__name__)
-    
 
     def getRandomSongs(self, uid):
         ''' This method is used to get a new list of recommendations based on previous liked recomendation
@@ -159,6 +160,7 @@ class Recommender(object):
             self.updateSongData(newSongs)
         else:
             pass
+        print('Done')
         self.logger.debug('Done update cache')
 
     def updateSongData(self, newSongs):
@@ -255,28 +257,64 @@ class Recommender(object):
         ui_thread.start()
         self.logger.info('App Started, opening...')
 
-        # this is the spinlock threading loop that shows the GUI when prompted from Flask
+        # this is the spinlock threading loop that execute commands coming from Flask
         try:
             while shared_state._running:
                 time.sleep(0.1)
-                # if the gui is open....
+
+                # If we need to log a user in
+                if shared_state.login():
+                    self.logger.debug('New User is trying to login')
+                    username, password = shared_state.loggin_in
+                    shared_state.currentUser = self.db.getUserID(
+                        username, password)
+
+                # If we need to create a user
+                if shared_state.create():
+                    self.logger.debug('Tying to create a new user')
+                    username, password, password2 = shared_state.create_user
+                    shared_state.currentUser = self.db.createUser(
+                        username, password, password2)
+
+                # If we need to delete a user
+                if shared_state.delete():
+                    self.logger.debug('Trying to delete a user')
+                    userid, password = shared_state.delete_user
+                    shared_state.currentUser = self.db.deleteUser(
+                        userid, password)
+
+                # If we need to save a users songs that they rated
+                if shared_state.rate_songs():
+                    self.logger.debug('Updating rated songs for a user')
+                    ratedSongs = shared_state.user_ratings
+                    self.db.setUserSongData(ratedSongs)
+
+                # If user requests the gui to be open....
                 if shared_state.clicked():
-                    self.logger.info('User requested the GUI')
-                    output = mainGUI()
-                    if len(output) == 3:
-                        # update genres, and recommender
-                        uid = shared_state.currentUser
-                        if uid is not None:
-                            self.logger.info('User updated app prefrences')
-                            self.setClassifier(output[1])
-                            self.updateGenres(uid, output[0])
-                            # update cache
-                            self.updateCache(output[2])
+                    self.logger.debug('User requested the GUI')
+                    uid = shared_state.currentUser
+                    if uid is not None:
+                        genres = self.db.getUserGenres(uid)
+                        output = mainGUI(genres)
+                        if len(output) == 3:
+                            # update genres, and recommender
+                                self.logger.debug('User updated app prefrences')
+                                self.setClassifier(output[1])
+                                self.updateGenres(uid, output[0])
+                                # update cache takes a while, so new thread??
+                                cache_thread = threading.Thread(target=self.updateCache, args=(output[2],), daemon=True)
+                                cache_thread.start()
+                                cache_thread.join()
+                                shared_state.loading = False
+                        else:
+                            self.logger.debug('User canceled GUI')
+                            pass
                     else:
-                        self.logger.info('User canceled GUI')
+                        self.logger.debug('User NOT valid')
                         pass
+                # If we need to load recomendations and disply new ones
                 if shared_state.refresh():
-                    self.logger.info(
+                    self.logger.debug(
                         'User requested to refresh list of recommendations')
                     # refresh takes a while, so put in thread
                     pool = ThreadPool(1)
@@ -285,6 +323,7 @@ class Recommender(object):
                         self.calculateRecommendataion, [uid])[0]
                     pool.close()
                     pool.join()
+
             ui_thread.join()
 
         # gracefully terminates when Ctrl-c is hit
@@ -296,9 +335,4 @@ class Recommender(object):
 
 if __name__ == '__main__':
     engine = Recommender()
-
-    #engine.db.deleteUser(2, "world")
-    # engine.db.commitWork()
-    # engine.db.closeDatabase()
-
     engine.runApp()

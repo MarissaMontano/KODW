@@ -5,8 +5,6 @@ import time
 import os
 
 app = Flask(__name__)
-DIR = os.path.dirname(os.path.abspath(__file__))
-ConnectStr =  os.path.join(DIR,'OBDW.db')
 
 
 @app.route('/')
@@ -52,19 +50,18 @@ def login():
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
-        db = database.Database(ConnectStr, False)
-        db.openDatabase()
-        allow = db.getUserID(username, password)
-
+        # see if they are really a user
+        app.config['SHARED'].record_login(username, password)
+        time.sleep(0.1)
+        allow = app.config['SHARED'].currentUser
         # check if valid user,if so log them in, else ask them to login again
         if allow is not None:
-            #store user is in the session
+            # store user is in the session
             session['userID'] = allow
             app.config['SHARED'].record_refresh(session['userID'])
         else:
             flash('Incorrect username or password, please try again')
 
-        db.closeDatabase()
         return index()
     # they are trying to create a user
     else:
@@ -86,21 +83,19 @@ def create():
     username = request.form['username']
     password = request.form['password']
     password2 = request.form['password2']
-    db = database.Database(ConnectStr, False)
-    db.openDatabase()
-    created = db.createUser(username, password, password2)
 
-    # If sucsessful log them
+    app.config['SHARED'].record_create(username, password, password2)
+    time.sleep(0.1)
+    created = app.config['SHARED'].currentUser
+
+    # If sucsessful log them in
     # TODO: return error codes, or not a symbol, or cap, or numb, or to short, or user already exists, or OK.....instead of bool
     if created:
         flash('New account created successfully.')
-        allow = db.getUserID(username, password)
-        session['userID'] = allow
-
+        session['userID'] = created
+        
     else:
         flash('Unsuccessful attempt, please try again')
-
-    db.closeDatabase()
     return index()
 
 
@@ -111,14 +106,15 @@ def logout():
         Output: index function to get to login page 
     '''
     session.pop('userID', None)
+    app.config['SHARED'].currentUser = None
     return index()
 
 
 @app.route('/remove')
 def remove():
-    ''' Function...
-        Input:
-        Output:
+    ''' Function to render delete html page
+        Input:  None
+        Output: render_template
     '''
     return render_template('delete.html')
 
@@ -137,12 +133,11 @@ def delete():
     # Try to delete user
     uid = session['userID']
     password = request.form['password']
-    db = database.Database(ConnectStr, False)
-    db.openDatabase()
-    isDeleted = db.deleteUser(uid, password)
-    db.closeDatabase()
+    app.config['SHARED'].record_delete(uid, password)
+    time.sleep(0.3)
+    deleted = app.config['SHARED'].currentUser
 
-    if isDeleted:
+    if deleted is None:
         flash('Account deleted successfully :(.')
         session.pop('userID', None)
         return index()
@@ -153,21 +148,32 @@ def delete():
 
 @app.route('/recommend')
 def recommend():
-    ''' Function ...
+    ''' Function to load recomendation list and render music html page
         Input: None
-        Output: 
-    '''
-    recommendation = app.config['SHARED'].recommenList
+        Output: render_template
+    ''' 
+    recommendation = app.config['SHARED'].recommenList 
+    print('grab list')
     return render_template('music.html', recommendation=recommendation)
-
 
 @app.route('/music', methods=['POST', 'GET', 'PUT'])
 def music():
-    ''' Function ...
+    ''' Function to handel difffernt calls to and from the music page 
         Input: None
-        Output: 
+        Output: recommend function
     '''
+    print('here')
     if request.method == 'POST':
+        waiting = True
+        while waiting:
+            if app.config['SHARED'].loading:
+                time.sleep(0.5)
+                print('still waiting')
+            else:
+                print('unflashed')
+                session.pop('_flashes', None)
+                waiting=False
+
         # save the ratings
         if request.form['music'] == "Save Ratings":
             ratedSongs = []
@@ -177,35 +183,35 @@ def music():
                 if rating is not None:
                     app.config['SHARED'].recommenList[idx][5] = int(rating)
                     ratedSongs.append([session['userID'], song, int(rating)])
-            db = database.Database(ConnectStr, False)
-            db.openDatabase()
-            db.setUserSongData(ratedSongs)
-            db.closeDatabase()
+            app.config['SHARED'].record_user_rating(ratedSongs)
+            time.sleep(0.3)
             pass
 
         # Refresh without reloading
         elif request.form['music'] == "Cancel":
             pass
 
+        # This means they want the GUI
+        elif request.form['music'] == "Configure app":
+            app.config['SHARED'].record_click(session['userID'])
+            app.config['SHARED'].loading = True
+            time.sleep(0.1)
+            flash("Loading...")
+            print('flashed')
+
         # Refresh the page
-        elif request.form['music'] == "Refresh":
+        else:
             app.config['SHARED'].record_refresh(session['userID'])
             time.sleep(0.8)
-
-        # This means they want the GUI
-        else:
-            app.config['SHARED'].record_click(session['userID'])
-            time.sleep(0.3)
-            # flash("Loading...")
-            # return loading()
+                 
     return recommend()
 
 
 @app.route('/loading')
 def loading():
-    ''' Function ...
+    ''' Function to handel reloading the music page with new recommendations 
         Input: None
-        Output: 
+        Output: render_template or recommend function
     '''
     if app.config['SHARED'].load:
         return render_template('loading.html')
@@ -216,18 +222,18 @@ def loading():
 
 @app.route('/contact')
 def contact():
-    ''' Function ...
-        Input: None
-        Output: 
+    ''' Function to render the contact html page 
+        Input:  None
+        Output: render_template
     '''
     return render_template('contact.html')
 
 
 @app.route('/about')
 def about():
-    ''' Function ...
-        Input: None
-        Output: 
+    ''' Function to render the contact html page
+        Input:  None
+        Output: render_template
     '''
     return render_template('about.html')
 

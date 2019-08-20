@@ -7,7 +7,7 @@ import sys
 
 
 class MainWindow(QMainWindow):
-    def __init__(self, *args, **kwargs):
+    def __init__(self, genreList = [], *args, **kwargs):
         super().__init__(*args, **kwargs)
 
         # Palette stuff - text white, background dark gray
@@ -28,7 +28,10 @@ class MainWindow(QMainWindow):
         classifierMenu.addAction(knear)
         classifierMenu.addAction(rbfsvm)
         classifierMenu.addAction(gradBoost)
-        classifierMenu.setStyleSheet("QMenu::item {background-color: rgb(33, 33, 33);}")
+        classifierMenu.setStyleSheet("""
+            QMenu::item {background-color: rgb(33, 33, 33); color: rgb(126, 126, 126); }
+            QMenu::item:pressed {color: rgb(255,255,255);}
+            QMenu::item:selected {color: rgb(255,255,255);}""")
         # Action to close gui
         closeAction = QAction("&Close", self)
         closeAction.setStatusTip('Close the Appliction')
@@ -38,9 +41,14 @@ class MainWindow(QMainWindow):
         helpMenu = mainMenu.addMenu('&Help')
         helpMenu.addMenu(classifierMenu)
         helpMenu.addAction(closeAction)
+        helpMenu.setStyleSheet("""
+            QMenu::item {background-color: rgb(33, 33, 33); color: rgb(126, 126, 126); }
+            QMenu::item:pressed {color: rgb(255,255,255);}
+            QMenu::item:selected {color: rgb(255,255,255);}""")
         mainMenu.setStyleSheet("""
-        QMenu::item {background-color: rgb(33, 33, 33);}
-        QMenuBar{background-color: rgb(33, 33, 33);}""")
+            QMenuBar{background-color: rgb(33, 33, 33);color: rgb(126, 126, 126); }
+            QMenuBar::item:pressed {color: rgb(255,255,255);}
+            QMenuBar::item:selected {color: rgb(255,255,255);}""")
 
         # Set width/height of main window
         width = self.width()
@@ -48,7 +56,7 @@ class MainWindow(QMainWindow):
         self.resize(width/.6, height/.6)
 
         # Default to showing the main widget first
-        self.startMainWidget()
+        self.startMainWidget(genreList)
 
 
     def startKNearest(self):
@@ -93,7 +101,7 @@ class MainWindow(QMainWindow):
         self.setCentralWidget(self.basicWidget)
         self.show()
 
-    def startMainWidget(self):
+    def startMainWidget(self, genreList):
         ''' Method to show the main widget templet that lets you choose classifiers, genres, and update the cache 
 
                 Input:  None
@@ -102,7 +110,7 @@ class MainWindow(QMainWindow):
         # Set title, style and widget   
         self.setWindowTitle("OBDW")
         self.setStyleSheet('background-color: rgb(27, 27, 27);')
-        self.mainWidget = MainWidget()
+        self.mainWidget = MainWidget(genreList)
 
         #set button functionality 
         self.mainWidget.cancelButton.clicked.connect(self.close)

@@ -17,7 +17,7 @@ class Database(object):
     def openDatabase(self):
         ''' Method to create a connection to the database and set the cursor
 
-                Input: None
+                Input:  None
                 Output: None
         '''
         try:
@@ -28,7 +28,7 @@ class Database(object):
             self.cursor = self.cxn.cursor()
 
         except DB.Error as error:
-            print("Error connecting to database. " + str(error))
+            #print("Error connecting to database. " + str(error))
             exit(225)
 
     def closeDatabase(self):
@@ -80,7 +80,7 @@ class Database(object):
                 Input: username (string)
                        password (string)
                        password2 (string)
-                Output: True if sucsessful, False otherwise
+                Output: uid (int) if sucsessful, None otherwise
         '''
         # check if passwords match
         # TODO: make more secure (need  caps, 8 characters, and symbol, etc...)
@@ -98,12 +98,11 @@ class Database(object):
                 # Need one bad rating so classifier dosn't break
                 uid = self.getUserID(username, password)
                 # Bad hack... need lowest rating in data set for classifier to work, so default to hate justin bieber's Baby 
-                print(type([uid, '6epn3r7S14KUqlReYr77hA', 1]))
                 self.setUserSongData([[uid, '6epn3r7S14KUqlReYr77hA', 1]])
                 
-                return True
+                return uid
         else:
-            return False
+            return None
 
     def getUserID(self, username, password):
         ''' Method to get a user id for a specific user
@@ -128,7 +127,7 @@ class Database(object):
 
                 Input:  userID (int)
                         password (string)
-                Output: True if sucsessful, False otherwise
+                Output: None if sucsessful, uid (int) otherwise
         '''
         # check if password matches current user
         self.cursor.execute(
@@ -140,9 +139,10 @@ class Database(object):
                 "DELETE FROM User WHERE User_ID = ?;", (userID, ))
             self.cursor.execute(
                 "DELETE FROM User_Song WHERE User_ID = ?;", (userID, ))
-            return True
+            self.commitWork()
+            return None
         else:
-            return False
+            return userID
 
     def getUsersSongData(self, userID):
         ''' Method to get list of songs and their ratings related to a specific user
@@ -209,6 +209,7 @@ class Database(object):
             else:
                 self.cursor.execute("INSERT INTO User_Song (User_ID, Song_ID, Rating) VALUES(?, ?, ?);",
                                     (uid, sid, rate))
+        self.commitWork()
 
     def getUserGenres(self, userID):
         ''' Method to get the Users genres given their ID
@@ -248,10 +249,19 @@ class Database(object):
         '''
         # Get genres from past selections
         oldGenreList = self.getUserGenres(userID)
+        
+        # Delete unselected genres
+        for genre in oldGenreList:
+            if genre not in newGenreList:
+                oldGenreList.remove(genre)
+        # Add newly selected ones 
         for genre in newGenreList:
             if genre not in oldGenreList:
                 oldGenreList.append(genre)
+        
+                
         # update the genre list with new genres not already in the list
+        print (oldGenreList)
         self.cursor.execute(
             '''UPDATE User SET Genres = ? WHERE User_ID = ? ''', (str(oldGenreList), userID))
         return True

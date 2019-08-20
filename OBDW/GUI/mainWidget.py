@@ -7,7 +7,7 @@ import math
 
 
 class MainWidget(QWidget):
-    def __init__(self, *args, **kwargs):
+    def __init__(self, genreList=[], *args, **kwargs):
         super().__init__(*args, **kwargs)
         # Get screen size to make obj reletive instread of fixed    
         sizeObject = QDesktopWidget().screenGeometry(-1)
@@ -45,17 +45,6 @@ class MainWidget(QWidget):
         self.genreTable.verticalHeader().setVisible(False)
         self.genreTable.setSizeAdjustPolicy(
             QAbstractScrollArea.AdjustToContents)
-        self.genreTable.setStyleSheet("""
-            QTableWidget{
-                background-color: transparent;
-                border: none;
-            }
-            QTableView{
-                selection-background-color:transparent;
-                selection-color:red;
-                border:.5px solid black;
-                color:gray;
-            }""")
 
         genres = ['acoustic', 'afrobeat', 'alt-rock', 'alternative', 'ambient', 'black-metal', 'bluegrass', 'blues', 'bossanova',
                   'chicago-house', 'chill', 'classical', 'comedy', 'country', 'dance', 'death-metal', 'deep-house', 'detroit-techno', 
@@ -79,7 +68,9 @@ class MainWidget(QWidget):
             col = i % 6
             types = QTableWidgetItem(genres[i])
             types.setTextAlignment(Qt.AlignCenter)
-            self.genreTable.setItem(row, col, types)
+            self.genreTable.setItem(row, col, types) 
+            if genres[i] in genreList:
+                types.setSelected(True)
     
         # Label for classifier
         classifierLable = QLabel(
@@ -160,7 +151,27 @@ class MainWidget(QWidget):
         self.cancelButton.setStyleSheet(buttonStyle)
         self.cacheButton.setStyleSheet(buttonStyle)
 
-        self.classifierCombo.setStyleSheet(
-            "background-color: rgb(33,33,33);border:.5px solid black; color: gray;")
+        self.classifierCombo.setStyleSheet("""
+            QComboBox{background-color: rgb(33,33,33); color:gray; border:.5px solid black;}
+            QComboBox::item{color: gray; background-color: rgb(33,33,33);}
+            QComboBox::item:selected{color: rgb(255,255,255);}
+            """)
+
+        self.genreTable.setStyleSheet("""
+            QTableWidget{
+                background-color: transparent;
+                border: none;
+            }
+            QTableView{
+                selection-background-color:transparent;
+                selection-color:red;
+                border:.5px solid black;
+                color:gray;
+            }
+            QTableWidget::item:selected:active{
+                color:red;
+                background-color:transparent;
+            }
+            """)
 
    

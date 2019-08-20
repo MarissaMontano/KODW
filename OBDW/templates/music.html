@@ -1,124 +1,167 @@
-{% extends "base.html" %}
-{% block head %}
- {{ super() }}
-{% endblock %}
-{% block body %}
-
-<h1>Music Recommendations</h1>
-
-
-
-<form action="/music" method="POST">
-    <table class="recommendations">
-        <tr class="recTitle">
-        <td>Name</td>
-        <td>Artist</td>
-        <td>Link</td>
-        <td>Rating</td>
-        </tr>
-        {% for id, song, artist, link, idx, rating in recommendation %}
-            <tr>
-                <td style=" text-align: left; padding-left: 3%;"> {{ song }} </td>
-                <td style=" text-align: left; "> {{ artist }} </td>
-                <td> <a class="listenLink" href= {{ link }} > Listen</a></td>
-                <td> <div class="rate">
-                    {% if rating == 0 %}
-                        <input type="radio" id={{idx}}+5  name={{idx}} value="5" />
-                        <label for={{idx}}+5  title={{idx}}>5 stars</label>
-                        <input type="radio" id={{idx}}+4  name={{idx}} value="4" />
-                        <label for={{idx}}+4 title={{idx}}>4 stars</label>
-                        <input type="radio" id={{idx}}+3  name={{idx}} value="3" />
-                        <label for={{idx}}+3 title={{idx}}>3 stars</label>
-                        <input type="radio" id={{idx}}+2  name={{idx}} value="2" />
-                        <label for={{idx}}+2 title={{idx}}>2 stars</label>
-                        <input type="radio" id={{idx}}+1  name={{idx}} value="1" />
-                        <label for={{idx}}+1 title={{idx}}>1 star</label>
-                        <input name={{idx}}s value={{id}}>
-                    {% elif rating == 1 %}
-                        <input type="radio" id={{idx}}+5  name={{idx}} value="5" />
-                        <label for={{idx}}+5  title={{idx}}>5 stars</label>
-                        <input type="radio" id={{idx}}+4  name={{idx}} value="4" />
-                        <label for={{idx}}+4 title={{idx}}>4 stars</label>
-                        <input type="radio" id={{idx}}+3  name={{idx}} value="3" />
-                        <label for={{idx}}+3 title={{idx}}>3 stars</label>
-                        <input type="radio" id={{idx}}+2  name={{idx}} value="2" />
-                        <label for={{idx}}+2 title={{idx}}>2 stars</label>
-                        <input type="radio" id={{idx}}+1  name={{idx}} value="1" checked="checked" />
-                        <label for={{idx}}+1 title={{idx}}>1 star</label>
-                        <input name={{idx}}s value={{id}}>
-                    {% elif rating == 2 %}
-                        <input type="radio" id={{idx}}+5  name={{idx}} value="5" />
-                        <label for={{idx}}+5  title={{idx}}>5 stars</label>
-                        <input type="radio" id={{idx}}+4  name={{idx}} value="4" />
-                        <label for={{idx}}+4 title={{idx}}>4 stars</label>
-                        <input type="radio" id={{idx}}+3  name={{idx}} value="3" />
-                        <label for={{idx}}+3 title={{idx}}>3 stars</label>
-                        <input type="radio" id={{idx}}+2  name={{idx}} value="2" checked="checked"/>
-                        <label for={{idx}}+2 title={{idx}}>2 stars</label>
-                        <input type="radio" id={{idx}}+1  name={{idx}} value="1" />
-                        <label for={{idx}}+1 title={{idx}}>1 star</label>
-                        <input name={{idx}}s value={{id}}>
-                    {% elif rating == 3 %}
-                        <input type="radio" id={{idx}}+5  name={{idx}} value="5" />
-                        <label for={{idx}}+5  title={{idx}}>5 stars</label>
-                        <input type="radio" id={{idx}}+4  name={{idx}} value="4" />
-                        <label for={{idx}}+4 title={{idx}}>4 stars</label>
-                        <input type="radio" id={{idx}}+3  name={{idx}} value="3" checked="checked"/>
-                        <label for={{idx}}+3 title={{idx}}>3 stars</label>
-                        <input type="radio" id={{idx}}+2  name={{idx}} value="2" />
-                        <label for={{idx}}+2 title={{idx}}>2 stars</label>
-                        <input type="radio" id={{idx}}+1  name={{idx}} value="1" />
-                        <label for={{idx}}+1 title={{idx}}>1 star</label>
-                        <input name={{idx}}s value={{id}}>
-                    {% elif rating == 4 %}
-                        <input type="radio" id={{idx}}+5  name={{idx}} value="5" />
-                        <label for={{idx}}+5  title={{idx}}>5 stars</label>
-                        <input type="radio" id={{idx}}+4  name={{idx}} value="4" checked="checked"/>
-                        <label for={{idx}}+4 title={{idx}}>4 stars</label>
-                        <input type="radio" id={{idx}}+3  name={{idx}} value="3" />
-                        <label for={{idx}}+3 title={{idx}}>3 stars</label>
-                        <input type="radio" id={{idx}}+2  name={{idx}} value="2" />
-                        <label for={{idx}}+2 title={{idx}}>2 stars</label>
-                        <input type="radio" id={{idx}}+1  name={{idx}} value="1" />
-                        <label for={{idx}}+1 title={{idx}}>1 star</label>
-                        <input name={{idx}}s value={{id}}>
-                    {% else %}
-                        <input type="radio" id={{idx}}+5  name={{idx}} value="5" checked="checked"/>
-                        <label for={{idx}}+5  title={{idx}}>5 stars</label>
-                        <input type="radio" id={{idx}}+4  name={{idx}} value="4" />
-                        <label for={{idx}}+4 title={{idx}}>4 stars</label>
-                        <input type="radio" id={{idx}}+3  name={{idx}} value="3" />
-                        <label for={{idx}}+3 title={{idx}}>3 stars</label>
-                        <input type="radio" id={{idx}}+2  name={{idx}} value="2" />
-                        <label for={{idx}}+2 title={{idx}}>2 stars</label>
-                        <input type="radio" id={{idx}}+1  name={{idx}} value="1" />
-                        <label for={{idx}}+1 title={{idx}}>1 star</label>
-                        <input name={{idx}}s value={{id}}>
-                    {% endif %}
-                    </div> 
-                </td>
-            </tr>
-        {% endfor %}
-    </table>
-    <br>
-    <input style=" width: 7%; float: right; margin-right: 8%;" type="submit" value="Cancel" name ="music" class="btn btn-primary">
-    <input style=" width: 10%; float: right; margin-right: 1%;" type="submit" value="Save Ratings" name ="music" class="btn btn-primary">
-    
- </form>
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> KODW</title>
+        <link rel="stylesheet" href="./static/style/baseStyle.css" type="text/css">
+    </head>
+    <body>
+        <div class="header">
+            <h1>Knock Off Discover Weekly</h1>
+        </div>
+        <hr>
+        <div class="links">
+            <div class="navbar">
+                <span class="bar">
+                    <a href="/home">Home page</a>
+                </span>
+                <span class="bar">
+                    <p>  |  </p>
+                </span>
+                <span class="bar">
+                    <a href="/logout">Logout</a>
+                </span>
+                <span class="bar">
+                    <p>  |  </p>
+                </span>
+                <span class="bar">
+                    <a href="/remove">Delete account</a>
+                </span>
+            </div>
+            <div class="vertical-menu">
+                <div class=vert><a href="/recommend">Music</a></div>
+                <div class=vert><a href="/about">About</a></div>
+                <div class=vert><a href="/contact">Contact Us</a></div>
+           </div> 
+        </div>
+        <div class="change">
+        <h1>Music Recommendations</h1>
 
 
+            {% with error = get_flashed_messages() %}
+                {% if error %}
+                <form method="POST" action="/music">
+                    <div class="alert">
+                        {{error[0]}}
+                    </div>
+                </form>
+                {% else %}
+                <form action="/music" method="POST">
+                    <table class="recommendations">
+                        <tr class="recTitle">
+                        <td>Name</td>
+                        <td>Artist</td>
+                        <td>Link</td>
+                        <td>Rating</td>
+                        </tr>
+                        {% for id, song, artist, link, idx, rating in recommendation %}
+                            <tr>
+                                <td style=" text-align: left; padding-left: 3%;"> {{ song }} </td>
+                                <td style=" text-align: left; "> {{ artist }} </td>
+                                {% if link != None %}
+                                    <td> <a class="listenLink" href= {{ link }} > Listen</a></td> 
+                                {% else %}  
+                                    <td>     </td>
+                                {% endif %}
+                                <td> <div class="rate">
+                                    {% if rating == 0 %}
+                                        <input type="radio" id={{idx}}+5  name={{idx}} value="5" />
+                                        <label for={{idx}}+5  title={{idx}}>5 stars</label>
+                                        <input type="radio" id={{idx}}+4  name={{idx}} value="4" />
+                                        <label for={{idx}}+4 title={{idx}}>4 stars</label>
+                                        <input type="radio" id={{idx}}+3  name={{idx}} value="3" />
+                                        <label for={{idx}}+3 title={{idx}}>3 stars</label>
+                                        <input type="radio" id={{idx}}+2  name={{idx}} value="2" />
+                                        <label for={{idx}}+2 title={{idx}}>2 stars</label>
+                                        <input type="radio" id={{idx}}+1  name={{idx}} value="1" />
+                                        <label for={{idx}}+1 title={{idx}}>1 star</label>
+                                        <input name={{idx}}s value={{id}}>
+                                    {% elif rating == 1 %}
+                                        <input type="radio" id={{idx}}+5  name={{idx}} value="5" />
+                                        <label for={{idx}}+5  title={{idx}}>5 stars</label>
+                                        <input type="radio" id={{idx}}+4  name={{idx}} value="4" />
+                                        <label for={{idx}}+4 title={{idx}}>4 stars</label>
+                                        <input type="radio" id={{idx}}+3  name={{idx}} value="3" />
+                                        <label for={{idx}}+3 title={{idx}}>3 stars</label>
+                                        <input type="radio" id={{idx}}+2  name={{idx}} value="2" />
+                                        <label for={{idx}}+2 title={{idx}}>2 stars</label>
+                                        <input type="radio" id={{idx}}+1  name={{idx}} value="1" checked="checked" />
+                                        <label for={{idx}}+1 title={{idx}}>1 star</label>
+                                        <input name={{idx}}s value={{id}}>
+                                    {% elif rating == 2 %}
+                                        <input type="radio" id={{idx}}+5  name={{idx}} value="5" />
+                                        <label for={{idx}}+5  title={{idx}}>5 stars</label>
+                                        <input type="radio" id={{idx}}+4  name={{idx}} value="4" />
+                                        <label for={{idx}}+4 title={{idx}}>4 stars</label>
+                                        <input type="radio" id={{idx}}+3  name={{idx}} value="3" />
+                                        <label for={{idx}}+3 title={{idx}}>3 stars</label>
+                                        <input type="radio" id={{idx}}+2  name={{idx}} value="2" checked="checked"/>
+                                        <label for={{idx}}+2 title={{idx}}>2 stars</label>
+                                        <input type="radio" id={{idx}}+1  name={{idx}} value="1" />
+                                        <label for={{idx}}+1 title={{idx}}>1 star</label>
+                                        <input name={{idx}}s value={{id}}>
+                                    {% elif rating == 3 %}
+                                        <input type="radio" id={{idx}}+5  name={{idx}} value="5" />
+                                        <label for={{idx}}+5  title={{idx}}>5 stars</label>
+                                        <input type="radio" id={{idx}}+4  name={{idx}} value="4" />
+                                        <label for={{idx}}+4 title={{idx}}>4 stars</label>
+                                        <input type="radio" id={{idx}}+3  name={{idx}} value="3" checked="checked"/>
+                                        <label for={{idx}}+3 title={{idx}}>3 stars</label>
+                                        <input type="radio" id={{idx}}+2  name={{idx}} value="2" />
+                                        <label for={{idx}}+2 title={{idx}}>2 stars</label>
+                                        <input type="radio" id={{idx}}+1  name={{idx}} value="1" />
+                                        <label for={{idx}}+1 title={{idx}}>1 star</label>
+                                        <input name={{idx}}s value={{id}}>
+                                    {% elif rating == 4 %}
+                                        <input type="radio" id={{idx}}+5  name={{idx}} value="5" />
+                                        <label for={{idx}}+5  title={{idx}}>5 stars</label>
+                                        <input type="radio" id={{idx}}+4  name={{idx}} value="4" checked="checked"/>
+                                        <label for={{idx}}+4 title={{idx}}>4 stars</label>
+                                        <input type="radio" id={{idx}}+3  name={{idx}} value="3" />
+                                        <label for={{idx}}+3 title={{idx}}>3 stars</label>
+                                        <input type="radio" id={{idx}}+2  name={{idx}} value="2" />
+                                        <label for={{idx}}+2 title={{idx}}>2 stars</label>
+                                        <input type="radio" id={{idx}}+1  name={{idx}} value="1" />
+                                        <label for={{idx}}+1 title={{idx}}>1 star</label>
+                                        <input name={{idx}}s value={{id}}>
+                                    {% else %}
+                                        <input type="radio" id={{idx}}+5  name={{idx}} value="5" checked="checked"/>
+                                        <label for={{idx}}+5  title={{idx}}>5 stars</label>
+                                        <input type="radio" id={{idx}}+4  name={{idx}} value="4" />
+                                        <label for={{idx}}+4 title={{idx}}>4 stars</label>
+                                        <input type="radio" id={{idx}}+3  name={{idx}} value="3" />
+                                        <label for={{idx}}+3 title={{idx}}>3 stars</label>
+                                        <input type="radio" id={{idx}}+2  name={{idx}} value="2" />
+                                        <label for={{idx}}+2 title={{idx}}>2 stars</label>
+                                        <input type="radio" id={{idx}}+1  name={{idx}} value="1" />
+                                        <label for={{idx}}+1 title={{idx}}>1 star</label>
+                                        <input name={{idx}}s value={{id}}>
+                                    {% endif %}
+                                    </div> 
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                    <br>
+                    <input style=" width: 7%; float: right; margin-right: 8%;" type="submit" value="Cancel" name ="music" class="btn btn-primary">
+                    <input style=" width: 10%; float: right; margin-right: 1%;" type="submit" value="Save Ratings" name ="music" class="btn btn-primary">
+                    
+                </form>
 
-<form action="/music" method="POST", style="float: left; padding-left:2%;">
-    <div>
-        <input type="submit" value="Refresh" name="music" class="btn btn-primary">
-    </div>
-</form>
 
-<form action="/music" method="POST", style="float: left; padding-left: 2%;">
-    <div>
-        <input type="submit" value="Configure app" name="music" class="btn btn-primary">
-    </div>
-</form>
- 
 
-{% endblock%}
+                <form action="/music" method="POST", style="float: left; padding-left:2%;">
+                    <div>
+                        <input type="submit" value="Refresh" name="music" class="btn btn-primary">
+                    </div>
+                </form>
+
+                <form action="/music" method="POST", style="float: left; padding-left: 2%;">
+                    <div>
+                        <input type="submit" value="Configure app" name="music" class="btn btn-primary">
+                    </div>
+                </form>
+            {% endif %}
+            {% endwith %}
+        </div>       
+    </body>
+</html>

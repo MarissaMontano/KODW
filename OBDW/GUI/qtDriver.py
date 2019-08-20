@@ -3,9 +3,9 @@ from GUI.mainWindow import MainWindow
 import sys
 
 
-def main():
+def main(genreList=[]):
     app = QApplication(sys.argv)
-    mainWindow = MainWindow()
+    mainWindow = MainWindow(genreList)
     app.exec_()
     output = mainWindow.grabUserInfo()
     return(output)
