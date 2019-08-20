@@ -1,33 +1,18 @@
-2019/08/20 11:58:31 - INFO - App Started, opening...
-2019/08/20 11:58:31 - INFO -  * Running on http://0.0.0.0:3000/ (Press CTRL+C to quit)
-2019/08/20 11:58:32 - INFO - 127.0.0.1 - - [20/Aug/2019 11:58:32] "GET / HTTP/1.1" 200 -
-2019/08/20 11:58:34 - DEBUG - New User is trying to login
-2019/08/20 11:58:35 - INFO - 127.0.0.1 - - [20/Aug/2019 11:58:35] "POST /login HTTP/1.1" 200 -
-2019/08/20 11:58:35 - DEBUG - User requested to refresh list of recommendations
-2019/08/20 11:58:35 - DEBUG - Starting to collect new recommendations
-2019/08/20 11:58:35 - DEBUG - Starting new HTTPS connection (1): api.spotify.com:443
-2019/08/20 11:58:35 - DEBUG - https://api.spotify.com:443 "GET /v1/recommendations?limit=50&seed_tracks=2b3KgzISdjZVNPJJ1945nw%2C0utlOiJy2weVl9WTkcEWHy%2C5cpB6MXX1RmdVHnTLcKtHC%2C4WfjYOo0JxommRm1PyObJl%2C5OCJzvD7sykQEKHH7qAC3C HTTP/1.1" 200 None
-2019/08/20 11:58:35 - DEBUG - Starting new HTTPS connection (1): api.spotify.com:443
-2019/08/20 11:58:35 - DEBUG - https://api.spotify.com:443 "GET /v1/audio-features/?ids=1u8c2t2Cy7UBoG4ArRcF5g,33KJ2xFYONOlIYDBg6wPx8,6w2VaBGWcColW05nZROWvS,79OKfIXCPbNhZa3h1ZREag,1tKWfncBiRCuz1Iyey9RfV,33ZXjLCpiINn8eQIDYEPTD,57K5RyWj4jOlc07wRz6axh,5H6kQRRmrd5C7Pn4khGl3e,4xBjsLUSjcx2h7PcRikpQp,5fw1OTmI7ksd1SPVREYopG,1UGD3lW3tDmgZfAVDh6w7r,2qT1uLXPVPzGgFOx4jtEuo,6KOc6ViZB8NtfCVABmTe66,0iSDDumvHTzv6we9Yr1HzY,5KPKjcE2trO2hBWRzkb2Mo,5fu9WzCJm7cKoU0zUrCfi3,2hSTNN4M8DaKIc8tu6UJ12,3Q3myFA7q4Op95DOpHplaY,1bxEpNR75Hq3T2oF9AZjt8,2SIdGJTWirTxRNEyCp9ocI,5NYfB8i3ei2HJJj4v9s4VZ,4VUwkH455At9kENOfzTqmF,4K4l4lbc7LX6NjXxFp7E4c,71lyUtIPCMAYjTwwwxy2jW,078C2jXg7XsMgW78Gfx1JA,6plT7nFGiXKSBP9HFSI4ef,5wrM3MbU9xNuSZGbmRm9B7,1Ci4wASMY4xtKVMeHA6Sd5,4keoy2fqgwGnbWlm3ZVZFa,0sdbFOyfgAhAhWq8DpzkaW,2uujJLrRplaQMkEx8CybZ8,4QRWA5UqYU1st9aO0UfxOj,1Bqxj0aH5KewYHKUg1IdrF,6AGON2BGdPmPMJGiiNuuwl,5tZmLjU4vhPlJb12IweZuB,1e4rwBPVI32vZtTJu7mJ4J,0BU7nIcCZxYSE0hYcc5oZz,1XRgIKC5TPwo7nWGyKqgG0,3hE1UD7Mbcvd8j9rsbhoch,15EPc80XuFrb2LmOzGjuRg,0rNww8PLCIrZLPz001SPI1,0YizdApFI24c5SCQREguao,7tkqxOV765aQ6s45fBijjt,6glsMWIMIxQ4BedzLqGVi4,3v7GtykYEMuSg4dQyw4qZb,42sLMZkjyCCFlJ7ursoAp2,56mCGN7S1druROilPGNe3R,5XSQ9gBCM5iableEqmzUIC,4Km5HrUvYTaSUfiSGPJeQR,4lnAN2S1fcI0SjxEbksZVr HTTP/1.1" 200 None
-2019/08/20 11:58:35 - DEBUG - Done collecting new recommendations
-2019/08/20 11:58:36 - INFO - 127.0.0.1 - - [20/Aug/2019 11:58:36] "GET /recommend HTTP/1.1" 200 -
-2019/08/20 11:58:38 - DEBUG - User requested the GUI
-2019/08/20 11:58:38 - INFO - 127.0.0.1 - - [20/Aug/2019 11:58:38] "POST /music HTTP/1.1" 200 -
-2019/08/20 11:58:44 - DEBUG - User updated app prefrences
-2019/08/20 11:58:44 - DEBUG - Done update cache
-2019/08/20 11:58:47 - INFO - 127.0.0.1 - - [20/Aug/2019 11:58:47] "GET /recommend HTTP/1.1" 200 -
-2019/08/20 11:58:48 - DEBUG - User requested the GUI
-2019/08/20 11:58:48 - INFO - 127.0.0.1 - - [20/Aug/2019 11:58:48] "POST /music HTTP/1.1" 200 -
-2019/08/20 11:58:52 - DEBUG - User updated app prefrences
-2019/08/20 11:58:52 - DEBUG - Done update cache
-2019/08/20 11:58:54 - INFO - 127.0.0.1 - - [20/Aug/2019 11:58:54] "GET /recommend HTTP/1.1" 200 -
-2019/08/20 11:58:56 - DEBUG - User requested the GUI
-2019/08/20 11:58:56 - INFO - 127.0.0.1 - - [20/Aug/2019 11:58:56] "POST /music HTTP/1.1" 200 -
-2019/08/20 11:58:57 - DEBUG - User updated app prefrences
-2019/08/20 11:58:57 - DEBUG - Done update cache
-2019/08/20 11:58:59 - INFO - 127.0.0.1 - - [20/Aug/2019 11:58:59] "GET /recommend HTTP/1.1" 200 -
-2019/08/20 11:59:01 - DEBUG - User requested the GUI
-2019/08/20 11:59:01 - INFO - 127.0.0.1 - - [20/Aug/2019 11:59:01] "POST /music HTTP/1.1" 200 -
-2019/08/20 11:59:04 - DEBUG - User updated app prefrences
-2019/08/20 11:59:04 - DEBUG - Done update cache
-2019/08/20 11:59:07 - INFO - App stopped, exiting...
+2019/08/20 15:15:52 - INFO - App Started, opening...
+2019/08/20 15:15:52 - INFO -  * Running on http://0.0.0.0:3000/ (Press CTRL+C to quit)
+2019/08/20 15:15:54 - INFO - 127.0.0.1 - - [20/Aug/2019 15:15:54] "GET / HTTP/1.1" 200 -
+2019/08/20 15:15:56 - DEBUG - New User is trying to login
+2019/08/20 15:15:56 - DEBUG - User requested to refresh list of recommendations
+2019/08/20 15:15:56 - INFO - 127.0.0.1 - - [20/Aug/2019 15:15:56] "POST /login HTTP/1.1" 200 -
+2019/08/20 15:15:56 - DEBUG - Starting to collect new recommendations
+2019/08/20 15:15:56 - DEBUG - Starting new HTTPS connection (1): api.spotify.com:443
+2019/08/20 15:15:56 - DEBUG - https://api.spotify.com:443 "GET /v1/recommendations?limit=50&seed_tracks=6FRwDxXsvSasw0y2eDArsz%2C0rsmlyJFeb3qiGxmD3jjEw%2C2Uu8IiLkLY0UXhCHka4Dlr%2C30Zcjs7pgEkmJA1lEbGSWT%2C4EWCNWgDS8707fNSZ1oaA5 HTTP/1.1" 200 None
+2019/08/20 15:15:56 - DEBUG - Starting new HTTPS connection (1): api.spotify.com:443
+2019/08/20 15:15:56 - DEBUG - https://api.spotify.com:443 "GET /v1/audio-features/?ids=2XHjFJVXYlEzoDvN82h8s5,7aKs8kWKKau0SDgaeyZMAX,77oU2rjC5XbjQfNe3bD6so,2tR3FMUgtCTWheiDNnLtMP,3w23sQ5FSzCKEviFYf0nSQ,3aImJnJlAgcE7bJ1NxthGt,43PuMrRfbyyuz4QpZ3oAwN,4bnjq8zqtCnxTGxll5ezOO,5AFOEeVJIUCeWEpEyzNuTL,7zBPzAjKAqQpcv8F8GCq5s,5J5PXmMdQ2nh1lZOal8KmK,0B8QzDH7YWih85V5SEMnyJ,4j1Bk0BEIGCF9hR7cSwl9d,6AGON2BGdPmPMJGiiNuuwl,4F7A0DXBrmUAkp32uenhZt,2dCD8qq7yHZPZduA8FJazs,174UISK3l7VRbigEHxEev7,0bYkU27BwhhKsTxmvqWUDo,7gvrsINoNbkAeI7u7KV1QB,1nGoy0cEj0extAwXYNYTWd,1nZkrUFLq265za9lofFO3p,5H6kQRRmrd5C7Pn4khGl3e,6yLX8QnxlnEqZfs3YKCfjF,35xSkNIXi504fcEwz9USRB,1IqFh00G2kvvMm8pRMpehA,1RUTIdTnFs8lHSc0Zr4UJB,1Ci4wASMY4xtKVMeHA6Sd5,0PAf4n8jN2Jo6QXcqirRVq,1eQBEelI2NCy7AUTerX0KS,5MtN38MGEWJt60LwtBmFNP,5RC9YDHON0nXKmcQrL6WV6,5dXmPzPDTMWmxmpzxAV1JZ,5rb9QrpfcKFHM1EUbSIurX,1UBQ5GK8JaQjm5VbkBZY66,4Vqd7MuPVrciqRS3EzhKWb,3IOQZRcEkplCXg6LofKqE9,5v7kaZNsnyByrSJOfO8gKq,6dW75XbJ1WAMljOXWjTK46,5Ru99vS2BaLyBCH1PXFiJo,6MdqqkQ8sSC0WB4i8PyRuQ,3KiEydhjn7yf58h9jBD5Sa,1jrcFSX7o78xEnuxnmvlCJ,2QtxlzvSBONjs1bDC34ixs,3a6n2q7NcrAwgrZT3UOW1K,04KTF78FFg8sOHC1BADqbY,3PzsLpCMpHViX7vxPtf4uE,5kkZl3e7K1WwxTdwo9t3QJ,7x6hO9VMAee9x1iWaeNkL6,27GmP9AWRs744SzKcpJsTZ,0cNJ3huiV99wvUN1tmQLTL HTTP/1.1" 200 None
+2019/08/20 15:15:57 - DEBUG - Done collecting new recommendations
+2019/08/20 15:15:57 - INFO - 127.0.0.1 - - [20/Aug/2019 15:15:57] "GET /recommend HTTP/1.1" 200 -
+2019/08/20 15:15:58 - DEBUG - User requested the GUI
+2019/08/20 15:15:58 - INFO - 127.0.0.1 - - [20/Aug/2019 15:15:58] "POST /music HTTP/1.1" 200 -
+2019/08/20 15:16:01 - DEBUG - User updated app prefrences
+2019/08/20 15:16:01 - DEBUG - Done update cache
+2019/08/20 15:16:03 - INFO - 127.0.0.1 - - [20/Aug/2019 15:16:03] "GET /recommend HTTP/1.1" 200 -

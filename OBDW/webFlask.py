@@ -162,17 +162,15 @@ def music():
         Input: None
         Output: recommend function
     '''
-    print('here')
+
     if request.method == 'POST':
-        waiting = True
-        while waiting:
-            if app.config['SHARED'].loading:
-                time.sleep(0.5)
-                print('still waiting')
-            else:
-                print('unflashed')
-                session.pop('_flashes', None)
-                waiting=False
+        if app.config['SHARED'].loading:
+            time.sleep(0.5)
+            print('still waiting')
+        else:
+            print('unflashed')
+            session.pop('_flashes', None)
+            waiting=False
 
         # save the ratings
         if request.form['music'] == "Save Ratings":

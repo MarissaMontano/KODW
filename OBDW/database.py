@@ -258,10 +258,8 @@ class Database(object):
         for genre in newGenreList:
             if genre not in oldGenreList:
                 oldGenreList.append(genre)
-        
-                
+          
         # update the genre list with new genres not already in the list
-        print (oldGenreList)
         self.cursor.execute(
             '''UPDATE User SET Genres = ? WHERE User_ID = ? ''', (str(oldGenreList), userID))
         return True
