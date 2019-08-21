@@ -98,6 +98,7 @@ class Database(object):
                 # Need one bad rating so classifier dosn't break
                 uid = self.getUserID(username, password)
                 # Bad hack... need lowest rating in data set for classifier to work, so default to hate justin bieber's Baby 
+                # TODO: Update to say if you have at least one rating of 3 stars or less and 5 of 4-5 star ratings then it's ok
                 self.setUserSongData([[uid, '6epn3r7S14KUqlReYr77hA', 1]])
                 
                 return uid
@@ -247,6 +248,8 @@ class Database(object):
                         newGenreList (list of strings)
                 Output: True
         '''
+        if newGenreList == []:
+            return True 
         # update the genre list with new genres not already in the list
         self.cursor.execute(
             '''UPDATE User SET Genres = ? WHERE User_ID = ? ''', (str(newGenreList), userID))
