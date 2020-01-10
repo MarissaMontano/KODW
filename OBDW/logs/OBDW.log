@@ -1,28 +1,25 @@
-2019/08/20 16:41:00 - INFO - App Started, opening...
-2019/08/20 16:41:00 - INFO -  * Running on http://0.0.0.0:3000/ (Press CTRL+C to quit)
-2019/08/20 16:41:00 - INFO - 127.0.0.1 - - [20/Aug/2019 16:41:00] "GET / HTTP/1.1" 200 -
-2019/08/20 16:41:03 - DEBUG - New User is trying to login
-2019/08/20 16:41:03 - INFO - 127.0.0.1 - - [20/Aug/2019 16:41:03] "POST /login HTTP/1.1" 200 -
-2019/08/20 16:41:03 - DEBUG - User requested to refresh list of recommendations
-2019/08/20 16:41:03 - DEBUG - Starting to collect new recommendations
-2019/08/20 16:41:03 - DEBUG - Starting new HTTPS connection (1): api.spotify.com:443
-2019/08/20 16:41:03 - DEBUG - https://api.spotify.com:443 "GET /v1/recommendations?limit=50&seed_tracks=2X485T9Z5Ly0xyaghN73ed%2C3MAgQuClHcAV8E9CbeBS6f%2C1fOkmYW3ZFkkjIdOZSf596%2C7B8jvMOOMgezoy9VBnYETO%2C7eaKWfov7b2Qa2n6HTesL3 HTTP/1.1" 200 None
-2019/08/20 16:41:03 - DEBUG - Starting new HTTPS connection (1): api.spotify.com:443
-2019/08/20 16:41:03 - DEBUG - https://api.spotify.com:443 "GET /v1/audio-features/?ids=49zD0wr2S3d0lZPib0K4e1,46X8c9qJzpBLYcos3OX0CE,7Cu2COdH93MnuireuKNiS3,6Jb4oub0oD3jJls69ArCVz,3VDRXEOQDjBsQyzbFs1qGa,2mp3sLUNQaJ025Lx5f4AAJ,2n5gVJ9fzeX2SSWlLQuyS9,0Ln5tJyLX5qusquBOtq7wf,7IpDQcksaT8SxS7vOX4SRm,19wb6wNwgjLg69XQH94Vua,4j4pPKE3xAblPIbhxScC1j,1cKfbgfOojLCCBTYvH6J57,5ecAB0JSAlWdXMFBQvStac,20X0AnKMbmD4PG6D5W1G3G,4XQQovRSltOGWevTCgacXY,0HFrCOmhCYXlv4NdEwRAuj,1k2evZFY2y8sl6A9zVtwiK,1yzbqrSF0vuaO7nuKYSd6f,6plT7nFGiXKSBP9HFSI4ef,0Kz9aGVgFvndWkcaiylIt5,0q6LuUqGLUiCPP1cbdwFs3,5plHhbsmSBHQMv6Dk6YuLT,2PN3gbuBn5WBEwrEJH3xiu,4OBZT9EnhYIV17t4pGw7ig,2SFt8V7OKKyMpsToNXTd8j,2LsCoe4YjIlVdEIjj0Ftoq,0pgeVJrdNok4KhbiM58ayZ,1rZah1UGXvgiQCqLVlq4hS,3PAptX72PPmjj1Igms0zjo,2AgiH9n8cXo0csSkEhByKe,5ML9t3cfvJuDTeOLcOH2Bl,0Sl8C9oeS3b5Kv9bSvTPDr,0osPX8TruIebOhKuG6GK8C,5rgrBsAFYMun6yhtnLKRPz,5vIu19A3EEdHgFM4Cba6F4,35xSkNIXi504fcEwz9USRB,6kblAEj0T0312fv5QWsXzo,0ccCwNzXvr1Yoz91vKz31Z,3hTfNt05rYtyMamwkxyHaZ,6qYC8cq0UiP5oeHkqYMagH,7BHPGtpuuWWsvE7cCaMuEU,2Rea6PxenESVsJfEaGBGsD,70tFuqBcduJv15bEnOPRTh,0cs671lxX2eoDzr2KMuo3N,5NhlpQ6BOIz3S5welptk1W,60Ih7J2Q1o9shvMC2OAALu,516V4vS25xnGdVgkBWO6Wf,5kpnUpMNV9dPNCKY7JtW3Q,2073QOEC8rBtSyTsRyaWiP,3RBGG1be9aBaSvjnw6ABkh HTTP/1.1" 200 None
-2019/08/20 16:41:03 - DEBUG - Done collecting new recommendations
-2019/08/20 16:41:04 - INFO - 127.0.0.1 - - [20/Aug/2019 16:41:04] "GET /remove HTTP/1.1" 200 -
-2019/08/20 16:41:06 - INFO - 127.0.0.1 - - [20/Aug/2019 16:41:06] "GET /logout HTTP/1.1" 200 -
-2019/08/20 16:41:14 - DEBUG - New User is trying to login
-2019/08/20 16:41:14 - INFO - 127.0.0.1 - - [20/Aug/2019 16:41:14] "POST /login HTTP/1.1" 200 -
-2019/08/20 16:41:14 - DEBUG - User requested to refresh list of recommendations
-2019/08/20 16:41:14 - DEBUG - Starting to collect new recommendations
-2019/08/20 16:41:14 - DEBUG - Starting new HTTPS connection (1): api.spotify.com:443
-2019/08/20 16:41:14 - DEBUG - https://api.spotify.com:443 "GET /v1/recommendations?limit=50&seed_tracks=1UHBcngfWo8hi3m003wZtX%2C7tkqxOV765aQ6s45fBijjt%2C17vQTNbvhpvi92qOnDOFHB%2C3UWMvlNnUHjY48CfhvfOOg%2C60ZZNXIdwgUGkVGRt7foLT HTTP/1.1" 200 None
-2019/08/20 16:41:14 - DEBUG - Starting new HTTPS connection (1): api.spotify.com:443
-2019/08/20 16:41:14 - DEBUG - https://api.spotify.com:443 "GET /v1/audio-features/?ids=7tGlzXJv6GD5e5qlu5YmDg,6m3ZXs465Rt4Tc1iiLktXL,5hqh0JUxRShhqdaxu7wlz5,3w04cXVTLNvkl6foI4K1ze,6nTiIhLmQ3FWhvrGafw2zj,60ZZNXIdwgUGkVGRt7foLT,2NBQmPrOEEjA8VbeWOQGxO,5fu9WzCJm7cKoU0zUrCfi3,6fd3mZrsVbe7N6whWrlZYv,3VeuvRWfJLSOzeVPrgi5MR,2uujJLrRplaQMkEx8CybZ8,1ExAxTVymjFH7nMAFFoGG5,5pmL3RzOy3IvGFaSDi4hZL,6BOtDFg6GJm0rPUDuNmx57,3G0yz3DZn3lfraledmBCT0,4IXiFMhtXEbSEG8UoAeTwD,4aX4Oycsk1fhHIee1zqsDe,2lDthrz5QCx33vIHVE4BAh,4dK00wCxlqWEeN8BoM1BHT,2b26pEzhykvo9652UBhj6E,15EPc80XuFrb2LmOzGjuRg,5PEleSkK4p4E1sx3x7cOLt,7zBPzAjKAqQpcv8F8GCq5s,6Aj2H0Z0v0JgnSfPEwCgW0,4y4gIF4tD785sjnCFAtqRu,4SnvGQ7wRoFpxPKXmwJJMr,6hH8aoPnO3rRg8WKRZgbWw,2I88NEWpKrAPZuapXNV5G6,6TfBA04WJ3X1d1wXhaCFVT,7lg0XrvUawyMBRv13zwALu,0Altlm3kLPob56k2qqR4i2,2Yoi40YHBjbI2PycCeimJO,3OYYNXFY6tCSEt6eCbTrfl,3LDvLibID9j32PoWnT6v80,7fjLBPTsQrbkV2WRedi2bw,3y4YUioQQVCZriM2RjZIik,2hSTNN4M8DaKIc8tu6UJ12,1fpfYMT2RTc5W3Zluq5xVA,7M7IOOxwJpr6Fwf3YQbBCB,6vpmEb3q6U7trxPRMC2lnf,1gXBi2I04CLJkTQnhNfEJT,6JyuJFedEvPmdWQW0PkbGJ,6e2cZadrpYLe635arJ4ywB,1ULa3GfdMKs0MfRpm6xVlu,2xyi5jBkaQ741tXWTiqyr0,5MChi9fdCbTIWDJPPUuuW6,2w7CXqA8SonrkEC74zuBVM,2wXhFFVeYnoEhNLLWJjQ9j,5A6OHHy73AR5tLxgTc98zz,2sYUGgzQfHQ6lOWzbrny8Z HTTP/1.1" 200 None
-2019/08/20 16:41:14 - DEBUG - Done collecting new recommendations
-2019/08/20 16:41:18 - INFO - 127.0.0.1 - - [20/Aug/2019 16:41:18] "GET /remove HTTP/1.1" 200 -
-2019/08/20 16:41:21 - DEBUG - Trying to delete a user
-2019/08/20 16:41:21 - INFO - 127.0.0.1 - - [20/Aug/2019 16:41:21] "POST /delete HTTP/1.1" 200 -
-2019/08/20 16:41:23 - INFO - 127.0.0.1 - - [20/Aug/2019 16:41:23] "POST /delete HTTP/1.1" 200 -
-2019/08/20 16:42:00 - INFO - App stopped, exiting...
+2020/01/10 10:40:20 - INFO - App Started, opening...
+2020/01/10 10:40:20 - INFO -  * Running on http://0.0.0.0:3000/ (Press CTRL+C to quit)
+2020/01/10 10:40:27 - INFO - 127.0.0.1 - - [10/Jan/2020 10:40:27] "GET /music HTTP/1.1" 200 -
+2020/01/10 10:40:29 - INFO - 127.0.0.1 - - [10/Jan/2020 10:40:29] "GET /recommend HTTP/1.1" 200 -
+2020/01/10 10:40:32 - INFO - 127.0.0.1 - - [10/Jan/2020 10:40:32] "GET /logout HTTP/1.1" 200 -
+2020/01/10 10:40:34 - DEBUG - New User is trying to login
+2020/01/10 10:40:34 - DEBUG - User requested to refresh list of recommendations
+2020/01/10 10:40:34 - INFO - 127.0.0.1 - - [10/Jan/2020 10:40:34] "POST /login HTTP/1.1" 200 -
+2020/01/10 10:40:34 - DEBUG - Starting to collect new recommendations
+2020/01/10 10:40:34 - INFO - 127.0.0.1 - - [10/Jan/2020 10:40:34] "GET /static/sPoTiFy.png HTTP/1.1" 200 -
+2020/01/10 10:40:35 - DEBUG - Starting new HTTPS connection (1): api.spotify.com:443
+2020/01/10 10:40:35 - DEBUG - https://api.spotify.com:443 "GET /v1/recommendations?limit=50&seed_tracks=6kblAEj0T0312fv5QWsXzo%2C0I3q5fE6wg7LIfHGngUTnV%2C0utlOiJy2weVl9WTkcEWHy%2C0EXdB7xUEp2sxWHmofyi0n%2C6d3I7THB2bONUkxOo1DvmZ HTTP/1.1" 200 None
+2020/01/10 10:40:35 - DEBUG - Starting new HTTPS connection (1): api.spotify.com:443
+2020/01/10 10:40:35 - DEBUG - https://api.spotify.com:443 "GET /v1/audio-features/?ids=2Fw5S2gaOSZzdN5dFoC2dj,70RMVzexrIvYJiFEnuGymb,7LR85XLWw2yXqKBSI5brbG,3sTN90bIP2cJ1783ctHykO,4OKXvqtfwlvY2fYJ2lzHPH,1SyRNJfG1x58EFsWR8EM2k,36JWGQRW85mJYLXvnryEzL,2VbOnf4BivY15wG1GS5Vtv,55LRDFmsuazr533WrtHHW9,0Ff8rF6FX2aoXoz4tG4Ufj,3e0FzZjTXOUtiJGSClOBrI,0YveezON7jpiaHA8fnUHxN,22qlcwjzGZ4tygMiVzdQp9,0sj2jVLjaomVaFAJZqSZI9,3A4cpTBPaIQdtPFb5JxtaX,2lpygKqzPFtItQ4ss3cgfb,2uw8vslyCoFLQsoPcIhen5,73Ijn0pKw1YJVP4OO4jUl7,14XWXWv5FoCbFzLksawpEe,6jBCehpNMkwFVF3dz4nLIW,2g8HN35AnVGIk7B8yMucww,1K9YlxsaqEDqTaGHOdPVRJ,4xymOOdANFwko4RpeR961e,15EPc80XuFrb2LmOzGjuRg,5iUQMwxUPdJBFeGkePtM66,5MtN38MGEWJt60LwtBmFNP,2fxef3Rm1GnrcyGjvWP8oJ,6mz1fBdKATx6qP4oP1I65G,3GGg9FWBlAjrAvC16kazer,19C0LKY3DCcQtuviPJNy5d,0cNJ3huiV99wvUN1tmQLTL,4t6vrJg7GcUELCAxHX1z5W,3czHCIPtkuw2TFk1SOOQkC,4h5KBcltGefua73AUPYps7,0yLfXULLuRtVj2L4DIrwO7,2i37Y95xkPhHtoYBywVBUm,4ntsD33Pgsgk8rUyZLLiUV,2P3SLxeQHPqh8qKB6gtJY2,7gDwRzJhLs0fFHaGtMDJVM,4Km5HrUvYTaSUfiSGPJeQR,4pdgV8qr9Oytcv6thCdiIZ,35tWhD29yvWwB0IDRr6zsL,1e1JKLEDKP7hEQzJfNAgPl,1IAzD1muglOxOcPbUHs70R,0WIbzDVEpmOyBnqqdtqIL9,6YYd5MLpu45J0uLrMdivF7,2h3i5tGUl6hMu572umjcGo,2os0aK782bakCPmjow0SU0,21iL1HD3h5AXGdSZABFd8t,3utrFnKNa1QSmUIm8QxHEC HTTP/1.1" 200 None
+2020/01/10 10:40:37 - DEBUG - Done collecting new recommendations
+2020/01/10 10:40:37 - INFO - 127.0.0.1 - - [10/Jan/2020 10:40:37] "GET /recommend HTTP/1.1" 200 -
+2020/01/10 10:40:41 - DEBUG - User requested the GUI
+2020/01/10 10:40:41 - INFO - 127.0.0.1 - - [10/Jan/2020 10:40:41] "POST /music HTTP/1.1" 200 -
+2020/01/10 10:40:47 - DEBUG - User updated app prefrences
+2020/01/10 10:40:47 - DEBUG - Done update cache
+2020/01/10 10:40:54 - DEBUG - User requested the GUI
+2020/01/10 10:40:54 - INFO - 127.0.0.1 - - [10/Jan/2020 10:40:54] "POST /music HTTP/1.1" 200 -
+2020/01/10 10:41:08 - DEBUG - User updated app prefrences
+2020/01/10 10:41:08 - DEBUG - Done update cache
+2020/01/10 10:41:11 - INFO - App stopped, exiting...

@@ -16,10 +16,13 @@ ___
 
 ## Getting Started
 
-./install.txt
+./install.sh <- this installs the despendensies needed to run the app
+./recommender.py <- this runs the actual app
 
 ___
 
 ## Trouble shooting
 
-blah, blah. blah
+Make sure your spotify ID and Key are valid
+Make sure youre using the right IP and Port numbers
+
